@@ -1,0 +1,63 @@
+# Version 1.23
+
+[user]
+	name = Sean LAIDLAW
+	email = seanlaidlaw95@gmail.com
+
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	differents = diff
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	ld = log --pretty=format:"%C(yellow)%h\\ %C(red)[%ad]%Cred%d\\ %Creset%s%C(yellow)\\ [%cn]\\ %C(blue)[%G?]%Creset" --decorate --date=relative
+	ldd = log --name-only --graph --decorate --date=relative --pretty=format:"%C(yellow)%h\\ %C(red)[%ad]%Cred%d\\ %Creset%s%C(yellow)\\ [%cn]"
+	uh = reset --hard HEAD^
+	aa = add --all
+	ci = commit -a -v
+	st = status --short --branch
+	ls = ls-tree -r master --name-only
+	add = add -v
+	wdiff = diff --word-diff=color
+	signto = rebase --exec 'git commit --amend --no-edit -n -S' -i
+	originate = log --all -p --reverse --source -S
+	cpr = cherry-pick --strategy=recursive -X theirs
+[core]
+	attributesFile = ~/.gitattributes
+	ignorecase = true
+	[diff "zip"]
+	textconv = unzip -p
+	binary = true
+	[diff "gz"]
+	textconv = gzcat
+	binary = true
+	[diff "bz2"]
+	textconv = bzcat
+	binary = true
+	[diff "xz"]
+	textconv = xzcat
+	binary = true
+	[diff "tar"]
+	textconv = tar -O -xf
+	binary = true
+	[diff "tar-bz2"]
+	textconv = tar -O -xjf
+	binary = true
+	[diff "tar-gz"]
+	textconv = tar -O -xzf
+	binary = true
+	[diff "tar-xz"]
+	textconv = tar -O -xJf
+	binary = true
+	[diff "odf"]
+	textconv = odt2txt
+	[diff "pdf"]
+	textconv = pdfinfo
+	[diff "bin"]
+	textconv = hexdump -v -C
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	precomposeunicode = true
+	quotepath = false
+[diff]
+	tool = vimdiff
+[commit]
+	gpgSign = false

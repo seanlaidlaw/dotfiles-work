@@ -1,0 +1,13 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+.Trashes
+Thumbs.db
+.Spotlight-V100
+
+# Packages - its better to unpack them and commit the raw source
+*.7z
+*.dmg
+*.gz
+*.tar
+*.zip
