@@ -19,6 +19,8 @@ Plugin 'w0rp/ale'
 
 " <leader>gu to show undo/redo history tree
 Plugin 'sjl/gundo.vim'
+"run ;td or :TaskList to show all todos
+Plugin 'vim-scripts/TaskList.vim'
 
 " minimalist writing experience
 Plugin 'junegunn/goyo.vim'
@@ -78,6 +80,8 @@ set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
 set wrapscan	" Searches wrap around end of file
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
 let mapleader=","
@@ -290,10 +294,22 @@ if has('python3')
     let g:gundo_prefer_python3 = 1
 endif
 
+" tasklist
+map <leader>td <Plug>TaskList
+
+" NerdCommenter settings
+let g:NERDCustomDelimiters = {
+	\ 'rmd' : { 'left': '<!-- ','right': ' -->' },
+	\ 'beamer' : { 'left': '<!-- ','right': ' -->' }
+	\ }
+
 " ALE Settings
 map <F8> :ALEToggle<CR>
 inoremap <F8> <esc>:ALEToggle<CR>a
 " Set flake8 as python linter and autopep8 as python fixer
 let g:ale_fixers = {'python': ['autopep8']}
 let g:ale_linters = {'python': ['flake8']}
+
+" Goyo
+map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
 
