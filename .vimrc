@@ -14,6 +14,9 @@ Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
 
+" linter
+Plugin 'w0rp/ale'
+
 " <leader>gu to show undo/redo history tree
 Plugin 'sjl/gundo.vim'
 
@@ -263,6 +266,10 @@ augroup Shebang
 augroup END
 
 
+
+""""""""""""""""""""""""""""""
+"     PLUGIN SETTINGS        "
+""""""""""""""""""""""""""""""
 " Fugitive Plugin Settings
 nmap <silent> <leader>gs :Gstatus<cr>
 nmap <leader>ge :Gedit<cr>
@@ -282,4 +289,11 @@ let g:gundo_right = 1
 if has('python3')
     let g:gundo_prefer_python3 = 1
 endif
+
+" ALE Settings
+map <F8> :ALEToggle<CR>
+inoremap <F8> <esc>:ALEToggle<CR>a
+" Set flake8 as python linter and autopep8 as python fixer
+let g:ale_fixers = {'python': ['autopep8']}
+let g:ale_linters = {'python': ['flake8']}
 
