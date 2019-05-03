@@ -167,6 +167,9 @@ nnoremap Q <Nop>
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
+" enter vim at same place you left
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
 
 """""""""""""""""""""""""""""""
 "      SPELL CHECK            "
