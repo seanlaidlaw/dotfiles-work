@@ -1,5 +1,5 @@
 # Set path
-set -gx PATH /anaconda3/bin /anaconda3/condabin /Users/sl31/homebrew/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/munki /opt/X11/bin
+set -gx PATH /anaconda3/bin /anaconda3/condabin /Users/sl31/homebrew/bin /usr/local/bin /Users/sl31/homebrew/Cellar/ /usr/bin /bin /usr/sbin /sbin /usr/local/munki /opt/X11/bin
 set -x EDITOR vim
 set -x dotfiles /Users/sl31/Documents/dotfiles-work
 set -x PAGER bat
