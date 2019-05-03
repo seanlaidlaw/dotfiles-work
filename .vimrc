@@ -92,6 +92,7 @@ set shiftwidth=4	" Number of auto-indent spaces
 set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
 set softtabstop=4	" Number of spaces per Tab
+set noexpandtab		" use tabs not spaces
 
 set autochdir	" Change working directory to open buffer
 
