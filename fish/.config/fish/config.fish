@@ -20,4 +20,8 @@ abbr chmox "chmod +x"
 abbr vv "cd $dotfiles; $EDITOR .vimrc"
 abbr vfsh "$EDITOR $dotfiles/fish/.config/fish/config.fish"
 abbr stashme "git stash --include-untracked"
+
+# git abbreviations
 abbr gdc "git diff --cached"
+abbr gg "git st"
+abbr gcm "git commit -m"
