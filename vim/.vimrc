@@ -34,7 +34,11 @@ filetype plugin indent on    " required
 "         APPEARANCE          "
 """""""""""""""""""""""""""""""
 syntax on
+set background=dark
 colorscheme deep-space
+
+" colorscheme specific settings
+let g:deepspace_italics=1
 
 set list	" show invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
