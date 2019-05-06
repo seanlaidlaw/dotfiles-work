@@ -33,6 +33,24 @@ abbr gcm "git commit -m"
 abbr gap "git add -p"
 alias gri "git rebase -i "
 
+# compression alias
+#### make tarball without compression
+function tarball
+	set rootname (echo $argv | sed 's/\.[^.]*$//' | sed 's/\///g')
+	tar cvf "$rootname.tar" $argv
+end
+
+function targz
+	set rootname (echo $argv | sed 's/\.[^.]*$//' | sed 's/\///g')
+	env GZIP=-9 tar cvzf "$rootname.tar.gz" $argv
+end
+
+function tarxz
+	set rootname (echo $argv | sed 's/\.[^.]*$//' | sed 's/\///g')
+	tar cvJf "$rootname.tar.xz" $argv
+end
+
+
 function cd
 	if builtin cd $argv; and ls -F
 	end
