@@ -30,3 +30,6 @@ abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
 abbr gg "git st"
 abbr gcm "git commit -m"
+abbr gap "git add -p"
+alias gri "git rebase -i "
+
