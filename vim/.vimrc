@@ -174,8 +174,7 @@ nnoremap Q <Nop>
 autocmd BufWritePre * %s/\s\+$//e
 
 " enter vim at same place you left
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 """""""""""""""""""""""""""""""
 "      SPELL CHECK            "
