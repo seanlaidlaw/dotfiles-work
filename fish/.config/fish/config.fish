@@ -33,3 +33,7 @@ abbr gcm "git commit -m"
 abbr gap "git add -p"
 alias gri "git rebase -i "
 
+function cd
+	if builtin cd $argv; and ls -F
+	end
+end
