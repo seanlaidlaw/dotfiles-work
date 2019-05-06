@@ -2,6 +2,7 @@
 set -gx PATH /anaconda3/bin /anaconda3/condabin /Users/sl31/homebrew/bin /usr/local/bin /Users/sl31/homebrew/Cellar/ /usr/bin /bin /usr/sbin /sbin /usr/local/munki /opt/X11/bin
 set -x EDITOR nvim
 set -x dotfiles ~/.dotfiles
+set -x QUTE_BIB_FILEPATH ~/.qutebrowser_bibliography
 set -x PAGER bat
 
 # abbreviations to go places
@@ -22,6 +23,7 @@ abbr chmox "chmod +x"
 # easy file edit
 abbr vv "$EDITOR $dotfiles/vim/.vimrc"
 abbr vfsh "$EDITOR $dotfiles/fish/.config/fish/config.fish"
+abbr veb '$EDITOR -c "set syntax=bib" $QUTE_BIB_FILEPATH'
 
 # git abbreviations
 abbr stashme "git stash --include-untracked"
