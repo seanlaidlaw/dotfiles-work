@@ -92,11 +92,12 @@ let mapleader=","
 
 set mouse=a	" Allow mouse
 set autoindent	" Auto-indent new lines
-set shiftwidth=4	" Number of auto-indent spaces
-set smartindent	" Enable smart-indent
 set smarttab	" Enable smart-tabs
-set softtabstop=4	" Number of spaces per Tab
+set shiftround " round indent to a multiple of 'shiftwidth'
 set noexpandtab		" use tabs not spaces
+" for tabs to work these need to be the same
+set shiftwidth=4	" Number of auto-indent spaces
+set tabstop=4	" Number of spaces per Tab
 
 set autochdir	" Change working directory to open buffer
 
