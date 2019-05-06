@@ -4,6 +4,7 @@ set -x EDITOR nvim
 set -x dotfiles ~/.dotfiles
 set -x PAGER bat
 
+# abbreviations to go places
 abbr gd "cd $dotfiles"
 abbr pk "brew install"
 abbr t "tmux new"
@@ -17,11 +18,13 @@ abbr py2 "python2.7"
 abbr pwdpb "pwd | pbcopy"
 alias mkdir "mkdir -pv"
 abbr chmox "chmod +x"
-abbr vv "cd $dotfiles; $EDITOR .vimrc"
+
+# easy file edit
+abbr vv "$EDITOR $dotfiles/vim/.vimrc"
 abbr vfsh "$EDITOR $dotfiles/fish/.config/fish/config.fish"
-abbr stashme "git stash --include-untracked"
 
 # git abbreviations
+abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
 abbr gg "git st"
 abbr gcm "git commit -m"
