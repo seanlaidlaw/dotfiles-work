@@ -7,6 +7,8 @@ set -x PAGER bat
 
 # abbreviations to go places
 abbr gd "cd $dotfiles"
+
+# command shorthand
 abbr pk "brew install"
 abbr t "tmux new"
 abbr tls "tmux ls"
@@ -19,6 +21,7 @@ abbr py2 "python2.7"
 abbr pwdpb "pwd | pbcopy"
 alias mkdir "mkdir -pv"
 abbr chmox "chmod +x"
+alias ejectall "osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
 
 # easy file edit
 abbr vv "$EDITOR $dotfiles/vim/.vimrc"
