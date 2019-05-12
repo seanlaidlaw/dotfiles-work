@@ -32,6 +32,7 @@ abbr veb '$EDITOR -c "set syntax=bib" $QUTE_BIB_FILEPATH'
 abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
 abbr gg "git st"
+abbr d "git diff"
 abbr gcm "git commit -m"
 abbr gap "git add -p"
 alias gri "git rebase -i "
