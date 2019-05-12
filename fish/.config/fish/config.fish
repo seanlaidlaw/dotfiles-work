@@ -9,7 +9,7 @@ set -x PAGER bat
 abbr gd "cd $dotfiles"
 
 # command shorthand
-abbr pk "brew install"
+alias pk "env HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 abbr t "tmux new"
 abbr tls "tmux ls"
 abbr ta "tmux a -t"
