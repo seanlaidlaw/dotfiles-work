@@ -10,6 +10,9 @@ Plugin 'VundleVim/Vundle.vim'
 " themes
 Plugin 'tyrannicaltoucan/vim-deep-space'
 
+" writing
+Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
+
 Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
@@ -320,4 +323,7 @@ let g:ale_linters = {'python': ['flake8']}
 
 " Goyo
 map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
+
+" vim markdown <leader>p to paste img on clipboard
+nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
