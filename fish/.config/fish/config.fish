@@ -28,6 +28,9 @@ abbr vv "$EDITOR $dotfiles/vim/.vimrc"
 abbr vfsh "$EDITOR $dotfiles/fish/.config/fish/config.fish"
 abbr veb '$EDITOR -c "set syntax=bib" $QUTE_BIB_FILEPATH'
 
+# bind jk to escape mode
+bind -M insert jk "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f backward-char force-repaint;end"
+
 # git abbreviations
 abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
