@@ -36,6 +36,11 @@ abbr gcm "git commit -m"
 abbr gap "git add -p"
 alias gri "git rebase -i "
 
+# requires pushbullet-bash
+# src: https://github.com/Red5d/pushbullet-bash
+alias notifyme 'xargs -I {} sh -c "pushbullet push iPhone note \"Command finished with args: {}\""'
+
+
 # compression alias
 #### make tarball without compression
 function tarball
