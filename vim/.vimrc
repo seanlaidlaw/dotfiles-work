@@ -20,6 +20,9 @@ Plugin 'kshenoy/vim-signature' " show marks in sidebar
 " linter
 Plugin 'w0rp/ale'
 
+" color code highlighter
+Plugin 'lilydjwg/colorizer'
+
 " <leader>gu to show undo/redo history tree
 Plugin 'sjl/gundo.vim'
 "run ;td or :TaskList to show all todos
