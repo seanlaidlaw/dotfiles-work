@@ -49,6 +49,26 @@ alias gri "git rebase -i "
 alias notifyme 'xargs -I {} sh -c "pushbullet push iPhone note \"Command finished with args: {}\""'
 
 
+
+# set Oh My Fish theme:
+# this can be downloaded from https://github.com/seanlaidlaw/sl-cmorrell-fish
+omf theme sl-cmorrell-fish
+
+# set fish colors to colors of vim-deep-space
+set -U fish_color_autosuggestion 51617d
+set -U fish_color_comment 51617d
+set -U fish_color_command 608cc3
+set -U fish_color_operator 56adb7
+set -U fish_color_redirection 56adb7
+set -U fish_color_param 8f72bf
+set -U fish_color_quote b9ca4a
+set -U fish_color_quote b5a262
+set -U fish_color_error d54e53
+set -U fish_color_escape 00a6b2
+set -U fish_color_valid_path \x2d\x2dunderline
+
+
+
 # compression alias
 #### make tarball without compression
 function tarball
