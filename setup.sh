@@ -12,3 +12,17 @@ for folder in *; do
         stow "${folder}"
     fi
 done
+
+
+# Additional steps if setting up computer for first time:
+# curl -L https://get.oh-my.fish > install
+# fish install --path=~/.local/share/omf --config=~/.config/omf
+
+# omf install https://github.com/seanlaidlaw/sl-cmorrell-fish.git
+# omf theme sl-cmorrell-fish
+
+# Vundle installation
+# git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Installing xmenu
+# mkdir -p ~/Applications && cd ~/Applications && git clone https://github.com/uluyol/xmenu.git && cd xmenu && make
