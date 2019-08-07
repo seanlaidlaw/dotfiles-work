@@ -124,6 +124,16 @@ alias lnh='ln -s $(realpath .) $(realpath ~)'
 alias notifyme='xargs -I {} sh -c "pushbullet push iPhone note \"Command finished with args: {}\""'
 
 
+function cd {
+	builtin cd "$@" && ls -F
+}
+
+function cdir () {
+	cd "$(dirname "$@")"
+}
+
+
+
 # make a copy of argument in tarball
 function tarball {
 	rootname=$(echo $@ | sed 's/\.[^.]*$//' | sed 's/\///g')
@@ -142,6 +152,27 @@ function tarxz {
 	tar cvJf "$rootname.tar.xz" "$@"
 }
 
+# replace file in argument with gzip version
+function gzthis () {
+	for f in $@; do
+		gzip -9 "$f"
+	done
+}
+
+# replace file in argument with bgzipped version
+function bgzthis () {
+	for f in $@; do
+		bgzip -9 "$f"
+	done
+}
+
+# replace file in argument with xzzipped version
+function xzthis () {
+	for f in $@; do
+		xz -9 --extreme --threads=0 "$f"
+	done
+}
+
 
 ### Colorscheme Options ###
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -154,6 +185,3 @@ base16_tomorrow-night-eighties
 
 
 
-function cd {
-	builtin cd "$@" && ls -F
-}
