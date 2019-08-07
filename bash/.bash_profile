@@ -206,6 +206,11 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 base16_tomorrow-night-eighties
 
 
+# QFC SETUP for real-time multi-directories matching
+# INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
+# This allows c-f to start qfc
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+
 # Z SETUP
 # INSTALL WITH: brew install z
 . /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
