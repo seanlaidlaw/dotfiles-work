@@ -63,6 +63,11 @@ shopt -s cmdhist
 # store bash history instantly instead of on session close
 PROMPT_COMMAND='history -a'
 
+### LANGUAGE ###
+#set as US to avoid errors with 'locale not found'
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8",
+export LANG="en_US.UTF-8"
 
 ### ALIAS ###
 # aliases to go places
