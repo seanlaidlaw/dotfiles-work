@@ -206,4 +206,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 base16_tomorrow-night-eighties
 
 
+# Z SETUP
+# INSTALL WITH: brew install z
+. /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
 
