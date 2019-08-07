@@ -116,6 +116,9 @@ alias gcl='git clone'
 alias gap='git add --patch'
 alias gri='git rebase -i '
 
+# make symlink in home to current directory
+alias lnh='ln -s $(realpath .) $(realpath ~)'
+
 # requires pushbullet-bash
 # src: https://github.com/Red5d/pushbullet-bash
 alias notifyme='xargs -I {} sh -c "pushbullet push iPhone note \"Command finished with args: {}\""'

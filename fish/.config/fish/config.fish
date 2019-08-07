@@ -30,6 +30,7 @@ abbr pwdpb "pwd | pbcopy"
 alias mkdir "mkdir -pv"
 abbr chmox "chmod +x"
 alias ejectall "osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
+alias lnh 'ln -s (realpath .) (realpath ~)'
 
 # easy file edit
 abbr vv "$EDITOR $dotfiles/vim/.vimrc"
