@@ -133,6 +133,16 @@ function tarxz {
 }
 
 
+### Colorscheme Options ###
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# to set bash/zsh ANSI colors to my preferred colorscheme
+base16_tomorrow-night-eighties
+
+
 
 function cd {
 	builtin cd "$@" && ls -F

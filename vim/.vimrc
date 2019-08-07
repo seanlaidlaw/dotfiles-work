@@ -12,7 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " themes
-Plugin 'tyrannicaltoucan/vim-deep-space'
+Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
+Plugin 'chriskempson/base16-vim' " 256 color theme
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
@@ -45,10 +46,11 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""
 syntax on
 set background=dark
-colorscheme deep-space
 
-" colorscheme specific settings
-let g:deepspace_italics=1
+" for proper base16 support base16-shell needs to be installed
+"	 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+let base16colorspace=256
+colorscheme base16-eighties
 
 set list	" show invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
