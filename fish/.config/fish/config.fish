@@ -7,6 +7,14 @@ set -x PAGER bat
 
 # abbreviations to go places
 abbr gd "cd $dotfiles"
+abbr cd.. 'cd ../'                         # Go back 1 directory level
+abbr .. 'cd ../'                           # Go back 1 directory level
+abbr ... 'cd ../../'                       # Go back 2 directory levels
+abbr .3 'cd ../../../'                     # Go back 3 directory levels
+abbr .4 'cd ../../../../'                  # Go back 4 directory levels
+abbr .5 'cd ../../../../../'               # Go back 5 directory levels
+abbr .6 'cd ../../../../../../'
+
 
 # command shorthand
 alias pk "env HOMEBREW_NO_AUTO_UPDATE=1 brew install"

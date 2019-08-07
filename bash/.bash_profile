@@ -72,6 +72,13 @@ export LANG="en_US.UTF-8"
 ### ALIAS ###
 # aliases to go places
 alias gd='cd $dotfiles'
+alias cd..='cd ../'                         # Go back 1 directory level
+alias ..='cd ../'                           # Go back 1 directory level
+alias ...='cd ../../'                       # Go back 2 directory levels
+alias .3='cd ../../../'                     # Go back 3 directory levels
+alias .4='cd ../../../../'                  # Go back 4 directory levels
+alias .5='cd ../../../../../'               # Go back 5 directory levels
+alias .6='cd ../../../../../../'
 
 # command shorthand
 alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
