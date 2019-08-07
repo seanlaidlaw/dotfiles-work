@@ -102,7 +102,7 @@ map <silent> <leader><cr> :noh<cr>
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
 let mapleader=","
 
-set mouse=a	" Allow mouse
+set mouse=i	" Allow mouse in insert mode
 set autoindent	" Auto-indent new lines
 set smarttab	" Enable smart-tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
