@@ -132,6 +132,19 @@ function cdir () {
 	cd "$(dirname "$@")"
 }
 
+# moves file in argument to current directory
+function mvh () {
+	for f in $@; do
+		mv "$f" .
+	done
+}
+
+# moves file in argument to current directory
+function cph () {
+	for f in $@; do
+		cp "$f" .
+	done
+}
 
 
 # make a copy of argument in tarball
