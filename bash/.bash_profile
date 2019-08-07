@@ -186,6 +186,15 @@ function xzthis () {
 	done
 }
 
+# git add and git commit in same cmd
+function gitcc () {
+# first argument is file and second is commit message
+	echo "$1"
+	echo "$2"
+	git add "$1"
+	git commit -m "$2"
+}
+
 
 ### Colorscheme Options ###
 BASE16_SHELL="$HOME/.config/base16-shell/"
