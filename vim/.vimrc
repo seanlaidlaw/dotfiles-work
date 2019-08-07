@@ -1,3 +1,7 @@
+" set file encoding to avoid listchar errors in linux
+scriptencoding utf-8
+set encoding=utf-8
+
 " Plugin Management
 set nocompatible              " be iMproved, required
 filetype off                  " required
