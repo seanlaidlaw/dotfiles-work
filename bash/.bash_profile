@@ -59,6 +59,7 @@ HISTFILE=$HOME/.zhistory
 
 # fit multiline commands to just one history line
 shopt -s cmdhist
+shopt -s lithist
 
 # store bash history instantly instead of on session close
 PROMPT_COMMAND='history -a'
