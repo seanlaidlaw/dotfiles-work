@@ -216,3 +216,6 @@ base16_tomorrow-night-eighties
 # INSTALL WITH: brew install z
 . /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
 
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+    tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
