@@ -22,6 +22,20 @@ Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
 
+
+" Autocompletion
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim'
+else  " these allow deoplete to work with vim8
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+
+" Snippet support for deoplete
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
 " linter
 Plugin 'w0rp/ale'
 
@@ -263,7 +277,7 @@ endfunction
 
 
 " Navigating with guides
-inoremap <Tab><Space> <Esc>/<++><Enter>"_c4l
+inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 
 " File shortcuts
 " Open my bibliography file in split
@@ -336,4 +350,23 @@ map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
 
 " vim markdown <leader>p to paste img on clipboard
 nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+
+
+" deoplete Settings
+if has('nvim')
+	let g:deoplete#enable_at_startup = 1
+
+	" Enable snipMate compatibility feature.
+	let g:neosnippet#enable_snipmate_compatibility = 1
+
+	" read Rstudio snippet location
+	let g:neosnippet#snippets_directory='~/.R/snippets'
+
+	" use tab to expand current suggestion or suggested snippet
+	imap <expr><TAB>
+		\ neosnippet#expandable_or_jumpable() ?
+		\    "\<Plug>(neosnippet_expand_or_jump)" :
+			\ 	  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+endif
 
