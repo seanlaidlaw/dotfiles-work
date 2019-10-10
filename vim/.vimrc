@@ -64,11 +64,6 @@ filetype plugin indent on    " required
 syntax on
 set background=dark
 
-" for proper base16 support base16-shell needs to be installed
-"	 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-let base16colorspace=256
-colorscheme base16-eighties
-
 set list	" show invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
@@ -76,16 +71,26 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set laststatus=0
 set noshowmode
 
+" for proper base16 support base16-shell needs to be installed
+"	 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
 " Fix terminal colors
+let base16colorspace=256
 set t_Co=256
+colorscheme base16-eighties " set base16 colorscheme incase no truecolor support
 if !empty($COLORTERM)
 	" For Neovim 0.1.3 and 0.1.4
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 	" for vim 8 / Or if you have Neovim >= 0.1.5
 	if (has("termguicolors"))
-	set termguicolors
+		set termguicolors
+		colorscheme deep-space
+
+		" colorscheme specific settings
+		let g:deepspace_italics=1
 	endif
+
 endif
 
 " Correct RGB escape codes for vim inside tmux
