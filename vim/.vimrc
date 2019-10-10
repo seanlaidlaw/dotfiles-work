@@ -22,6 +22,9 @@ Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
 
+" Nvim-R
+Plugin 'jalvesaq/Nvim-R'
+
 
 " Autocompletion
 if has('nvim')
@@ -350,6 +353,16 @@ map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
 
 " vim markdown <leader>p to paste img on clipboard
 nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+
+" Nvim-R settings
+let maplocalleader = ','
+command! RStart let oldft=&ft | set ft=r | exe 'set ft='.oldft | let b:IsInRCode = function("DefaultIsInRCode") | normal <LocalLeader>rf
+au BufReadPost,BufNewFile *.r,*.R,*.Rmd normal ,rf
+nmap <Space> <Plug>RDSendLine
+vmap <Space> <Plug>RDSendSelection
+nmap <LocalLeader>cl <Plug>RClearAll
+nmap <LocalLeader>ll <Plug>RNLeftPart
+
 
 
 " deoplete Settings
