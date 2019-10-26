@@ -56,9 +56,9 @@ export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
 `# this shows current dir`\
 \$(if [ \$? == 0 ]; then echo ''; else echo '\[\e[0;41m\] ▲ \[\e[0m\]'; fi)\
 `# this line sets a symbol depending on exit status of previous command`\
-(\[\e[0;33m\]\$(echo \`bjobs -a | grep PEND | wc -l\`) \
+(\[\e[0;33m\]\$(echo \`bjobs -a 2>&1 | sed 's/No\sjob\sfoud//g' | awk 'NF' | grep PEND | wc -l\`) \
 `# this line adds number in yellow for nb of pending bjobs`\
-\[\e[0;32m\]\$(echo \`bjobs -a | grep RUN | wc -l\`)\[\e[0m\]) \
+\[\e[0;32m\]\$(echo \`bjobs -a 2>&1 | sed 's/No\sjob\sfoud//g' | awk 'NF' | grep RUN | wc -l\`)\[\e[0m\]) \
 `# this line adds number in green for nb of running bjobs`\
 \[\e[0;33m\]❯\[\e[0m\] "\
 `#this is the symbol i use to mark end of prompt and its colored yellow`
