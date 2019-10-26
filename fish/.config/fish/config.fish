@@ -114,6 +114,14 @@ function cd
 	end
 end
 
+function symlink
+	ln -s (realpath $argv[1]) (realpath $argv[2])
+end
+
+function rp
+    realpath "$argv" | pbcopy
+end
+
 function gri
     git stash --include-untracked && \
     echo "" && \
