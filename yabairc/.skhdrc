@@ -78,3 +78,6 @@ lctrl + alt - r : brew services restart skhd ; brew services restart yabai
 # Make window native fullscreen
 alt - f         : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle native-fullscreen
+
+# launch new terminal with alt-enter
+alt - return : open -na /Applications/iTerm.app
