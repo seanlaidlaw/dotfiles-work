@@ -95,6 +95,19 @@ function tarxz
 	tar cvJf "$rootname.tar.xz" $argv
 end
 
+function gzthis
+    for f in $argv
+	gzip -9 "$f"
+    end
+end
+
+function xzthis
+    for f in $argv
+	xz -9 --extreme --threads=1 "$f"
+    end
+end
+
+
 
 function cd
 	if builtin cd $argv; and ls -F
