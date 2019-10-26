@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " themes
 Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
 Plugin 'chriskempson/base16-vim' " 256 color theme
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
@@ -71,13 +72,18 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set laststatus=0
 set noshowmode
 
-" for proper base16 support base16-shell needs to be installed
-"	 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 " Fix terminal colors
-let base16colorspace=256
-set t_Co=256
-colorscheme base16-eighties " set base16 colorscheme incase no truecolor support
+colorscheme onehalfdark
+if has('nvim')
+	set t_Co=256
+	" for proper base16 support base16-shell needs to be installed
+	"git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+	let base16colorspace=256
+	set t_Co=256
+	colorscheme base16-eighties " set base16 colorscheme incase no truecolor support
+endif
+
 if !empty($COLORTERM)
 	" For Neovim 0.1.3 and 0.1.4
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
