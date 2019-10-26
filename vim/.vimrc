@@ -194,7 +194,7 @@ set diffopt+=vertical
 
 " Folding
 set foldenable " enable folding
-set foldmethod=indent
+set foldmethod=manual
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold Max
 
@@ -203,6 +203,13 @@ nnoremap <space> za
 
 " save session : saves windows and locations. Reopen with "nvim -S"
 nnoremap <leader>s :mksession<CR>
+
+" save folds
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 
 " Fast saving
 nmap <leader>w :w!<cr>
