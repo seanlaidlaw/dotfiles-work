@@ -40,6 +40,9 @@ endif
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
 
+" Autorun line by line and show result
+Plugin 'metakirby5/codi.vim'
+
 " linter
 Plugin 'w0rp/ale'
 
@@ -401,3 +404,9 @@ if has('nvim')
 
 endif
 
+let g:codi#interpreters = {
+	\ 'python': {
+		\ 'bin': 'python3',
+		\ 'prompt': '^\(>>>\|\.\.\.\) ',
+		\ },
+	\ }
