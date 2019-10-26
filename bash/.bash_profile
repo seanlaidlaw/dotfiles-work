@@ -88,6 +88,8 @@ alias la='ls --color=always -al --human-readable'
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
 alias vfsh="$EDITOR $dotfiles/fish/.config/fish/config.fish"
 alias vbrc="$EDITOR $dotfiles/bash/.bash_profile"
+alias vtmx="$EDITOR $dotfiles/tmux/.tmux.conf"
+alias vsub="$EDITOR $dotfiles/bin/bin/sub.sh"
 alias vbsh="vbrc"
 alias vbib="$EDITOR -c 'set syntax=bib' $QUTE_BIB_FILEPATH"
 
