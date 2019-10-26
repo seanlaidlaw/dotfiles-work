@@ -13,6 +13,9 @@ else
 	# Remap Caps lock key to backspace
 	hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
 
+	# disable dashboard
+	defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
+
 	# Reduce transparancy & animations
 
 	# opening and closing windows and popovers
@@ -41,3 +44,6 @@ else
 	# at least AnimateInfoPanes
 	defaults write com.apple.finder DisableAllAnimations -bool true
 fi
+
+# mount Sanger Lustre drive
+sshfs -o defer_permissions cgpfoo:/lustre/scratch119/realdata/mdt1/team176/sl31  ~/Mounts/lustre -o volname="Lustre"
