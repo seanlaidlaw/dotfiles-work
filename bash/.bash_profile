@@ -49,6 +49,21 @@ shopt -s lithist
 # store bash history instantly instead of on session close
 PROMPT_COMMAND='history -a'
 
+### PRETTY PROMPT ###
+export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
+`# this line shows first letter for each of the intermediate folders in the current dir`\
+\[\e[0;35m\]\${PWD##*/} \[\e[0m\]\
+`# this shows current dir`\
+\$(if [ \$? == 0 ]; then echo ''; else echo '\[\e[0;41m\] ▲ \[\e[0m\]'; fi)\
+`# this line sets a symbol depending on exit status of previous command`\
+(\[\e[0;33m\]\$(echo \`bjobs -a | grep PEND | wc -l\`) \
+`# this line adds number in yellow for nb of pending bjobs`\
+\[\e[0;32m\]\$(echo \`bjobs -a | grep RUN | wc -l\`)\[\e[0m\]) \
+`# this line adds number in green for nb of running bjobs`\
+\[\e[0;33m\]❯\[\e[0m\] "\
+`#this is the symbol i use to mark end of prompt and its colored yellow`
+
+
 ### LANGUAGE ###
 #set as US to avoid errors with 'locale not found'
 export LC_ALL="en_US.UTF-8"
