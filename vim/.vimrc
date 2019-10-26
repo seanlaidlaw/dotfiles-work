@@ -166,6 +166,9 @@ vmap S :s//g<Left><Left>
 " Opposite of J to split lines
 map K r<Enter>
 
+" Replace word under cursor with clipboard
+map <leader>cw ve"0px
+
 " press gm to go to mark (` is hard to press on my keyboard)
 nmap gm `
 
