@@ -49,9 +49,9 @@ abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
 abbr gg "git st"
 abbr d "git diff"
+abbr gca "git commit --amend"
 abbr gcm "git commit -m"
 abbr gap "git add -p"
-alias gri "git rebase -i "
 
 # requires pushbullet-bash
 # src: https://github.com/Red5d/pushbullet-bash
@@ -99,4 +99,13 @@ end
 function cd
 	if builtin cd $argv; and ls -F
 	end
+end
+
+function gri
+    git stash --include-untracked && \
+    echo "" && \
+    echo "changes in git directory have been stashed, remember to git stash pop' after rebase" && \
+    git stash list --color=always --pretty="%C(green)%h %>(14)%Cblue%cr %C(white)%gs" | head -n 1 && \
+    echo "" && \
+    git rebase -i "$argv[1]"~1
 end
