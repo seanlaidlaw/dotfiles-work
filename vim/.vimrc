@@ -280,6 +280,7 @@ nnoremap <leader>zz :source ~/.vimrc<cr>
 augroup Shebang
 	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl># -*- coding: utf-8 -*-\<nl>\"|$
 	autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
+	autocmd BufNewFile *.r 0put =\"#!/usr/bin/env Rscript\<nl>\"|$
 	autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
