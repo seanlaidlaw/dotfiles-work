@@ -183,6 +183,13 @@ function gitcc () {
 	git commit -m "$2"
 }
 
+function bkillall () {
+	for i in `bjobs | sed 's/ /\t/g' | cut -f 1 | xargs`
+	do
+		bkill $i
+	done
+}
+
 
 ### Colorscheme Options ###
 BASE16_SHELL="$HOME/.config/base16-shell/"
