@@ -26,26 +26,11 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 ### DEFAULT PROGRAMS ###
-export EDITOR=vim
+export EDITOR=nvim
+command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
+
 export PAGER=bat
-
-### DEFAULT locations ###
-dotfiles=$HOME/.dotfiles
-
-
-### PRETTY PROMPT ###
-export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
-`# this line shows first letter for each of the intermediate folders in the current dir`\
-\[\e[0;35m\]\${PWD##*/} \[\e[0m\]\
-`# this shows current dir`\
-\$(if [ \$? == 0 ]; then echo ''; else echo '\[\e[0;41m\] ▲ \[\e[0m\]'; fi)\
-`# this line sets a symbol depending on exit status of previous command`\
-\[\e[0;33m\]❯\[\e[0m\] "\
-`#this is the symbol i use to mark end of prompt and its colored yellow`
-
-# enables color for tab completion
-bind 'set colored-stats on'
-
+command -v $PAGER >/dev/null 2>&1 || export PAGER=less
 
 ### HISTORY SETTINGS ###
 # append history instead of overwriting
