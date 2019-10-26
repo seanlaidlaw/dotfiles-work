@@ -36,6 +36,14 @@ else  " these allow deoplete to work with vim8
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 
+" machine-learning based tool for autocompletion
+Plugin 'tbodt/deoplete-tabnine'
+" download TabNine binaries if not present
+if !isdirectory("~/.vim/bundle/deoplete-tabnine/binaries")
+    call system("bash ~/.vim/bundle/deoplete-tabnine/install.sh")
+endif
+
+
 " Snippet support for deoplete
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/neosnippet-snippets'
