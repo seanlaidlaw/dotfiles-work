@@ -50,6 +50,8 @@ abbr gdc "git diff --cached"
 abbr gg "git st"
 abbr d "git diff"
 abbr gca "git commit --amend"
+abbr grc "git rebase --continue"
+abbr gsp "git stash pop"
 abbr gcm "git commit -m"
 abbr gap "git add -p"
 
@@ -113,6 +115,11 @@ function cd
 	if builtin cd $argv; and ls -F
 	end
 end
+
+function cdir
+	cd (dirname "$argv[1]")
+end
+
 
 function symlink
 	ln -s (realpath $argv[1]) (realpath $argv[2])
