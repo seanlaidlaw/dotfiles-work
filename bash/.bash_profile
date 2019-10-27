@@ -1,3 +1,4 @@
+if  [ -n "$BASH_VERSION" ]; then #if using bash
 # make bash completion case insensitive
 bind 'set completion-ignore-case on'
 
@@ -25,22 +26,11 @@ bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-### DEFAULT PROGRAMS ###
-export EDITOR=nvim
-command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
-
-export PAGER=bat
-command -v $PAGER >/dev/null 2>&1 || export PAGER=less
-
 ### HISTORY SETTINGS ###
 # append history instead of overwriting
 shopt -s histappend
 export HISTFILESIZE=
 export HISTSIZE=
-
-# dont add these commands to history
-HISTIGNORE='ls:bg:fg:history'
-HISTFILE=$HOME/.zhistory
 
 # fit multiline commands to just one history line
 shopt -s cmdhist
@@ -63,6 +53,21 @@ export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
 \[\e[0;33m\]❯\[\e[0m\] "\
 `#this is the symbol i use to mark end of prompt and its colored yellow`
 
+fi
+
+
+### DEFAULT PROGRAMS ###
+export EDITOR=nvim
+command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
+
+export PAGER=bat
+command -v $PAGER >/dev/null 2>&1 || export PAGER=less
+
+
+# dont add these commands to history
+HISTIGNORE='ls:bg:fg:history'
+HISTORY_IGNORE=$HISTIGNORE # set zsh HISTORY_IGNORE to bash's
+HISTFILE=$HOME/.zhistory
 
 ### LANGUAGE ###
 #set as US to avoid errors with 'locale not found'
@@ -205,6 +210,15 @@ function bkillall () {
 	done
 }
 
+function gri () {
+    git stash --include-untracked && \
+    echo "" && \
+    echo "changes in git directory have been stashed, remember to git stash pop' after rebase" && \
+    git stash list --color=always --pretty="%C(green)%h %>(14)%Cblue%cr %C(white)%gs" | head -n 1 && \
+    echo "" && \
+    git rebase -i "$@"~1
+}
+
 
 ### Colorscheme Options ###
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -213,7 +227,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # to set bash/zsh ANSI colors to my preferred colorscheme
-base16_tomorrow-night-eighties
+command -v base16_tomorrow-night-eighties >/dev/null 2>&1 && base16_tomorrow-night-eighties
 
 
 # QFC SETUP for real-time multi-directories matching
@@ -223,7 +237,11 @@ base16_tomorrow-night-eighties
 
 # Z SETUP
 # INSTALL WITH: brew install z
-. /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
+if [ -f "/nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh" ]
+then
+	. /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
+fi
+
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
