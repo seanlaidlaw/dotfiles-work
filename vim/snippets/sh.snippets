@@ -1,0 +1,9 @@
+snippet ifexec
+    command -v ${1:command} foo >/dev/null 2>&1 && ${1:command}
+
+
+snippet iffile
+    if [ -f "${1:file}" ]; then
+
+snippet ifdir
+    if [ -d "${1:dir}" ]; then
