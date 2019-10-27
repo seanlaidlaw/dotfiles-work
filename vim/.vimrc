@@ -404,8 +404,12 @@ if has('nvim')
 	" Enable snipMate compatibility feature.
 	let g:neosnippet#enable_snipmate_compatibility = 1
 
-	" read Rstudio snippet location
-	let g:neosnippet#snippets_directory='~/.R/snippets'
+	" tell neosnippet snippet directory and symlink r snippets to rstudio dir
+	if !filereadable('~/.R/snippets')
+		call system("ln $dotfiles/vim/snippets/r.snippets $HOME/.R/snippets")
+	endif
+	let g:neosnippet#snippets_directory="$dotfiles/vim/snippets"
+
 
 	" use tab to expand current suggestion or suggested snippet
 	imap <expr><TAB>
