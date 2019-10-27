@@ -109,3 +109,35 @@ snippet shinymod
 	${1:name} <- function(input, output, session) {
 
 	}
+
+snippet ifrds
+	if (!file.exists('rds/${1:varname}.rds')) {
+
+		saveRDS(${1:varname}, file = 'rds/${1:varname}.rds')
+	} else {
+		${1:varname} = readRDS('rds/${1:varname}.rds')
+	}
+
+snippet swapcolname
+	i1 <- match(colnames(${1:df1}), ${2:annotationdf}\$ ${3:oldcolnames}, nomatch=0)
+	colnames(${1:df1})[i1] <- as.character(${2:annotationdf}\$ ${4:newcolnames}[i1])
+
+snippet selectcol
+	# by colname
+	${1:df} = subset(${1:df}, select = c(${2:col1name},${3:col2name}))
+	#by index
+	${1:df} <- ${1:df}[ -c(${2:col1indx},${2:col2indx}:${3:col2indx})]
+	#by regex
+	${1:df} = ${1:df}[,grepl("_A$",names(${1:df}))]
+
+
+snippet biomart
+	library(biomaRt)
+	ensembl <- useMart("ensembl", dataset="hsapiens_gene_ensembl")
+	# poissible attributes
+	listAttributes(ensembl)
+	gene_coords=getBM(
+		attributes=c("chromosome_name","hgnc_symbol","ensembl_gene_id", "ensembl_transcript_id" "start_position","end_position"),
+		filters="ensembl_gene_id",
+		values=${1:listtosubmit},
+		mart=ensembl)
