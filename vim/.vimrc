@@ -26,6 +26,8 @@ Plugin 'kshenoy/vim-signature' " show marks in sidebar
 " Nvim-R
 Plugin 'jalvesaq/Nvim-R'
 
+" Tmux interaction
+Plugin 'benmills/vimux'
 
 " Autocompletion
 if has('nvim')
