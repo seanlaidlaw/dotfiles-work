@@ -140,6 +140,9 @@ set wrapscan	" Searches wrap around end of file
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" Run last command with ,,
+map <leader><leader> @:<cr>
+
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
 let mapleader=","
 
