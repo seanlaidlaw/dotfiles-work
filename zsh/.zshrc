@@ -9,7 +9,7 @@ export ZSH="/nfs/users/nfs_s/sl31/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="sorin"
+ZSH_THEME="seanys_customized_sorin"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,8 +100,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey jk vi-cmd-mode
 
-autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ ls -a; }
-
 # read alias and fct from bash
-source ~/.bashrc
+emulate sh -c 'source ~/.bash_profile'
