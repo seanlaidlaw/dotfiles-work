@@ -137,3 +137,7 @@ function gri
     echo "" && \
     git rebase -i "$argv[1]"~1
 end
+
+function wdiffarg
+    diff -u (echo "$argv[1]" | psub) (echo "$argv[2]" | psub) | colordiff | diff-highlight
+end
