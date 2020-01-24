@@ -1,6 +1,16 @@
+snippet ifcd
+    scriptLocation="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+    scriptdirname=$(dirname "$scriptLocation")
+    if [ ! "$scriptdirname" == "$(pwd)" ]; then
+
+snippet ifstr
+    if [ "${1:str1}" == "${2:str2}" ]; then
+
+snippet iftree
+    if [[ ! $(tree | grep "foo") ]]; then
+
 snippet ifexec
     command -v ${1:command} foo >/dev/null 2>&1 && ${1:command}
-
 
 snippet iffile
     if [ -f "${1:file}" ]; then
