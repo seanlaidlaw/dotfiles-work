@@ -1,0 +1,115 @@
+body { font-family: Ideal Sans Book, Helvetica, sans-serif; }
+p { max-width: 700px; text-align: justify; margin: auto !important; font-family: Ideal Sans Book, Ideal Sans, Roboto, sans-serif; padding-top: 0.5em; padding-bottom: 0.5em; }
+#p-lang { position: fixed; top: 0px; right: 0px; margin-left: 5px; z-index: 99; }
+#p-lang-label { text-indent: -9999px; line-height: 0; border: none; }
+#p-lang-label::after { content: "L"; color: white; text-indent: 0; display: block; font-size: 34px !important; line-height: 64px !important; position: fixed; right: 4%; font-family: Ideal Sans Book, Helvetica, sans-serif; top: 1px; }
+#p-lang .body { display: none; text-align: right; right: 4%; border: none; }
+#p-lang:hover .body { display: block; }
+div#mw-panel div.portal div.body ul { margin: 0; padding: 2.3em 0 0 0; font-size: 1.2em; }
+div#mw-panel div.portal div.body ul li { text-align: right !important; }
+#firstHeading { font-size: 2.5em !important; }
+h2 { margin-bottom: 0.5em !important; }
+.mw-body-content { font-size: 1.08em !important; }
+h1,h2,h3,h4,h5,h6 { font-family: "Tiempos Text", serif !important; border-bottom: 2px solid #2196f3 !important; }
+
+.mw-body {max-width: 900px !important; margin: auto !important; text-align: center !important; }
+li { text-align: left !important; }
+#p-tb { display: none !important; }
+#p-interaction { display: none !important; }
+#footer { display: none !important; }
+.mw-editsection { display: none !important; }
+#siteSub, #ca-ve-edit, #ca-edit, #p-wikibase-otherprojects, #p-coll-print_export { display: none !important; }
+#ca-view, #ca-history, #ca-talk, #ca-nstab-main, #p-personal { display: none !important; }
+#mw-head { background: #2196F3 !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important; height: 64px !important; position: fixed !important; top: 0 !important; left: 0 !important; z-index: 99; }
+#p-namespaces, #p-views { background: none !important; position: absolute !important; top: 0 !important; }
+#p-namespaces { left: 200px; }
+#p-views { left: calc(330px + 18px + 500px) !important; }
+#p-Navigation ul:first-child li:first-child, #p-Navigation ul:first-child li:first-child a, #p-navigation ul:first-child li:first-child, #p-navigation ul:first-child li:first-child a { color: transparent !important; position: fixed !important; top: 0 !important; left: 0 !important; z-index: 99999 !important; height: 64px !important; width: 200px !important; padding: 0 !important; background-image: none !important; }
+#p-namespaces *, #p-views * { background: none !important; }
+#p-namespaces li, #p-views li, #p-variants-label { height: 64px !important; width: 64px !important; border-radius: 50% !important; }
+#p-namespaces li:active, #p-views li:active, #p-variants-label:active { border-radius: 50% !important; box-shadow: 0 0 0 8px #2196F3 inset, 0 0 0 32px rgba(255, 255, 255, 0.2) inset !important; transition: 0.1s; }
+#p-namespaces a, #p-views a, #p-variants-label { height: 64px !important; width: 64px !important; padding: 0 0 !important; color: transparent !important; user-select: none !important; }
+#p-logo, #ca-addsection { display: none !important; }
+#ca-edit:hover ~ #ca-addsection { display: inline-block !important; }
+#ca-addsection:hover { display: inline-block !important; }
+div#mw-panel { position: absolute !important; top: 64px !important; font-family: Roboto, Helvetica, sans-serif; }
+#p-search { position: absolute; top: 8px !important; left: 340px !important; margin: 0 !important; width: calc(100% - 256px) !important; height: 48px !important; max-width: 500px !important; }
+#searchform { position: absolute; top: -8px !important; margin: 0 !important; height: 48px !important; width: 100% !important; }
+#simpleSearch { background: rgba(255, 255, 255, 0.3) !important; border: none !important; padding: 0 !important; border-radius: 4px !important; width: 500px !important; height: 42px !important; max-width: 100% !important; }
+#searchButton { width: 42px !important; -webkit-filter: brightness(10) !important; }
+#searchInput { padding: 14px !important; }
+#searchInput, #searchInput::-webkit-input-placeholder { color: #fff !important; font-weight: bold !important; }
+#p-personal { background-color: transparent !important; height: 64px !important; top: 0 !important; right: 0 !important; padding: 19px !important; box-sizing: border-box !important; width: 64px !important; transition: 0.2s ease !important; }
+#p-personal li { opacity: 0; pointer-events: none; transition: 0.2s ease !important; font-size: 14px; font-weight: bold; }
+#p-personal li:not(:last-child) a { color: #333 !important; }
+#p-personal:hover { background-color: #fff !important; width: 240px !important; height: 2000px !important; box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1); }
+#p-personal:hover li { opacity: 1; pointer-events: auto; transition: 0.2s ease !important; }
+#p-personal ul { padding: 0 !important; }
+#p-personal ul li { display: block !important; }
+#p-personal ul li { display: block !important; width: 200px !important; }
+.ve-activated .vectorTabs .selected { box-shadow: none !important; }
+#pt-userpage { margin-top: 40px !important }
+.mw-body { border: 0 !important; border-top-left-radius: 3px !important; border-bottom-left-radius: 3px !important; box-shadow: 0 9px 22px rgba(0, 0, 0, 0.27) !important; /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; margin-left: 200px !important; */ }
+.infobox, .thumbinner, .toc, .mbox-small, .vertical-navbox, .plainlist, .navbox, .ambox-content { background: #fff !important; border: 0 !important; border-radius: 3px !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important; }
+.ambox-content { margin-bottom: 10px !important; }
+.infobox th:not(.adr), .infobox td:not(.logo) { border-top: 1px dashed #ccc; }
+.adr { border: 0 !important; }
+.thumbimage { border: 0 !important; border-radius: 3px !important; }
+.wikitable tr td, .wikitable tr th { border: 0 !important; background: transparent !important; }
+.wikitable tr { background: transparent !important; }
+.wikitable tr:not(:first-child) td, .wikitable tr:not(:first-child) th { border-top: 1px dashed #ccc !important; }
+.wikitable thead td, .wikitable thead th { border: 0 !important; }
+.wikitable { border: 0 !important; border-radius: 3px !important; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important; background: #fff !important; }
+#pt-notifications-alert { position: absolute !important; top: 20px !important; left: 24px !important; max-height: 60px !important; max-width: 60px !important; margin: 0 !important; }
+#pt-notifications-notice { position: absolute !important; top: 20px !important; left: 60px !important; max-height: 60px !important; max-width: 60px !important; margin: 0 !important; }
+#p-personal:not(:hover) #pt-userpage { opacity: 1 !important; margin: 0 !important; position: fixed !important; right: 64px !important; top: 23px !important; font-size: 18px !important; font-weight: bold !important; color: #fff !important; background: none !important; text-align: right !important; min-width: 300px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#p-personal:not(:hover) #pt-userpage a { color: #fff !important; text-align: right !important; }
+.portal { background: none !important; }
+.portal h3 { font-weight: bold !important; }
+#mp-topbanner, .MainPageBG { background: #ffffff !important; border: 0 !important; border-radius: 3px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+.MainPageBG > table { background: #ffffff !important; }
+.portal a, #mw-body a, .mw-body a { color: #2196F3!important; }
+.thumbcaption { padding: 8px !important; }
+.mw-dismissable-notice, #mw-AnonymousI18N-suggest { background: #444 !important; border-radius: 4px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; color: #fff !important; padding: 10px !important; border: none !important; }
+.mw-dismissable-notice a, #mw-AnonymousI18N-suggest a { color: #2196F3; }
+.mw-dismissable-notice-close, #mw-AnonymousI18N-decline { color: transparent !important; }
+.mw-dismissable-notice-close a, #mw-AnonymousI18N-decline { padding: 4px !important; color: transparent !important; }
+#mw-AnonymousI18N-suggest small { color: transparent !important; margin-top: 5px; }
+.NavHead { padding: 0 8px !important; padding-top: 6px !important; }
+.vertical-navbox tr:not(:first-child) td { border-top: 1px dashed #ccc !important; }
+tr:nth-child(2) td { padding-top: 8px !important; }
+tr:nth-child(3) th { padding-bottom: 8px !important; }
+.reflist li { border-bottom: 1px dashed #aaa !important; }
+table.wikitable > tr > th, table.wikitable > tr > td, table.wikitable > * > tr > th, table.wikitable > * > tr > td { padding: 8px !important; }
+table tr table tr td, table tr table tr th { border: 0 !important; }
+.suggestions-result { padding: 5px 10px !important; }
+.suggestions-special { padding: 10px !important; }
+.suggestions-result:hover, .suggestions-special:hover, .suggestions-special:hover > div { background: #ddd !important; color: #000 !important; }
+.suggestions-result-current, .suggestions-result-current > div { background: #fff !important; color: #000 !important; }
+#p-Navigation ul:first-child li:first-child a::before, #p-navigation ul:first-child li:first-child a::before { position: absolute !important; content: "Wikipedia" !important; color: #fff !important; font-weight: 600 !important; font-size: 30px !important; line-height: 64px !important; text-align: center !important; left: calc(50% - 61.5px) !important; letter-spacing: -1px !important; }
+#pt-logout { margin-top: 16px !important; }
+#pt-logout a { background: #2196F3 !important; padding: 10px 30px !important; border-radius: 4px !important; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important; color: #fff !important; }
+li#pt-notifications-alert a.mw-echo-notifications-badge, li#pt-notifications-notice a.mw-echo-notifications-badge { color: transparent !important; }
+.navbox-group, .navbox-list { border-top: 1px dashed #999 !important; }
+.navbox-subgroup tr td, .navbox-subgroup tr th { background: transparent !important; }
+.navbox, .navbox-subgroup { background: #ffffff; }
+#content input { border: none !important; border-radius: 0 !important; box-shadow: 0 -1px gray inset, -200px 0 #fff inset, 200px 0 #fff inset, 0 -2px #2196F3 inset !important; transition: 0.3s box-shadow; }
+#content input:focus { box-shadow: 0 -1px #2196F3 inset, 0px 0 #fff inset, 0px 0 #fff inset, 0 -2px #2196F3 inset !important; }
+#content input[type='checkbox'] + label:before { border: 2px solid gray !important; transition: 0.2s !important; }
+#content input[type='checkbox']:checked + label:before { border: 2px solid #2196F3 !important; background-color: #2196F3 !important; }
+#content button, .mw-ui-button { background: #2196F3 !important; border: 0 !important; padding: 9px 17px !important; overflow: hidden !important; position: relative !important; box-shadow: none !important; }
+#content button::before, .mw-ui-button::before { position: absolute !important; content: "" !important; width: 50px !important; height: 50px !important; background: #fff !important; border-radius: 50% !important; transform: scale(0) !important; top: calc(50% - 25px) !important; left: calc(50% - 25px) !important; transition: 0s !important; opacity: 0.7 !important; }
+#content .ui-button-icon-only { background: #ccc !important; }
+#content button:active::before, .mw-ui-button:active::before { transform: scale( 6) !important; opacity: 0 !important; transition: 0.6s !important; }
+a.new, #p-personal a.new { color: #fd6464 !important; }
+/*#n-contents*/
+/*#n-currentevents*/
+/*#n-featuredcontent*/
+/*#n-randompage*/
+/*#n-shoplink*/
+/*#n-sitesupport*/
+/*#p-Contribuer*/
+/*#p-coll-print_export*/
+/*#p-wikibase-otherprojects*/
+/*.uls-settings-trigger*/
+/*.wbc-editpage*/
