@@ -90,6 +90,7 @@ alias tls="tmux ls"
 alias ta="tmux a -t"
 alias v="$EDITOR"
 alias c="$PAGER"
+alias chl="bat --style=plain"
 alias zz='source $dotfiles/bash/.bash_profile'
 alias py="python3"
 alias py2="python2.7"
