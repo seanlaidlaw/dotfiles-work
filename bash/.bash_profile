@@ -221,6 +221,9 @@ function gri () {
     git rebase -i "$@"~1
 }
 
+function wdiffarg () {
+	diff -u <(echo "$1" ) <(echo "$2") | colordiff | diff-highlight
+}
 
 ### Colorscheme Options ###
 BASE16_SHELL="$HOME/.config/base16-shell/"

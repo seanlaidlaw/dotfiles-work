@@ -17,12 +17,14 @@ abbr .6 'cd ../../../../../../'
 
 
 # command shorthand
+alias rm "rm -iv"
 alias pk "env HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 abbr t "tmux new"
 abbr tls "tmux ls"
 abbr ta "tmux a -t"
 alias v "$EDITOR"
 alias c "$PAGER"
+abbr psed "perl -p -e 's/"
 abbr zz "omf reload"
 abbr py "python3"
 abbr py2 "python2.7"
@@ -136,4 +138,8 @@ function gri
     git stash list --color=always --pretty="%C(green)%h %>(14)%Cblue%cr %C(white)%gs" | head -n 1 && \
     echo "" && \
     git rebase -i "$argv[1]"~1
+end
+
+function wdiffarg
+    diff -u (echo "$argv[1]" | psub) (echo "$argv[2]" | psub) | colordiff | diff-highlight
 end

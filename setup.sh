@@ -26,3 +26,6 @@ done
 
 # Installing xmenu
 # mkdir -p ~/Applications && cd ~/Applications && git clone https://github.com/uluyol/xmenu.git && cd xmenu && make
+
+# setup symlink between system qutebrowser userscripts dir to dotfiles
+[ "$(uname)" == "Darwin" ] && [ -d "$dotfiles/qutebrowser/.qutebrowser/userscripts/" ] && ln -s "$dotfiles/qutebrowser/.qutebrowser/userscripts/" "/Users/$USER/Library/Application Support/qutebrowser/userscripts"

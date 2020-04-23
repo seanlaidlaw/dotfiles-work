@@ -29,6 +29,8 @@ Plugin 'jalvesaq/Nvim-R'
 " Easymotion
 " press ,<leader><leader> then a movement key to show hints to move cursor
 Plugin 'easymotion/vim-easymotion' " press <leader><leader> to
+" Tmux interaction
+Plugin 'benmills/vimux'
 
 " Autocompletion
 if has('nvim')
@@ -140,6 +142,9 @@ set incsearch	" Searches for strings incrementally
 set wrapscan	" Searches wrap around end of file
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
+
+" Run last command with ,,
+map <leader><leader> @:<cr>
 
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
 let mapleader=","
