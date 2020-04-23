@@ -184,6 +184,20 @@ nmap gm `
 nmap <Tab> :bn<CR>
 nmap <S-Tab> :bp<CR>
 
+" close buffer on ZZ not all of vim (unless only one buffer)
+nmap ZZ :call CloseBuffer()<cr>
+function CloseBuffer()
+  let num_buffers = len(getbufinfo({'buflisted':1}))
+  echom num_buffers
+  if (num_buffers == 1)
+	  x
+  else
+	  bd
+  endif
+endfunction
+
+
+
 " allow indenting of code blocks without losing selection each time
 vnoremap < <gv
 vnoremap > >gv

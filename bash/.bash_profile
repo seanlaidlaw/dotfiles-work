@@ -52,6 +52,7 @@ fi
 
 ### DEFAULT locations ###
 export dotfiles=$HOME/.dotfiles
+
 ### DEFAULT PROGRAMS ###
 export EDITOR=nvim
 command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
