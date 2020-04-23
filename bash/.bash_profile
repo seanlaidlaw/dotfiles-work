@@ -1,3 +1,8 @@
+# set PATH
+# add my ~/bin path to PATH
+[[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
+
+
 if  [ -n "$BASH_VERSION" ]; then #if using bash
 # make bash completion case insensitive
 bind 'set completion-ignore-case on'
@@ -225,14 +230,6 @@ function wdiffarg () {
 	diff -u <(echo "$1" ) <(echo "$2") | colordiff | diff-highlight
 }
 
-### Colorscheme Options ###
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# to set bash/zsh ANSI colors to my preferred colorscheme
-command -v base16_tomorrow-night-eighties >/dev/null 2>&1 && base16_tomorrow-night-eighties
 
 function vimd5 {
 	$EDITOR -d <(find "$1" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /') <(find "$2" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /')
@@ -243,13 +240,6 @@ function vimd5 {
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
 # This allows c-f to start qfc
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-
-# Z SETUP
-# INSTALL WITH: brew install z
-if [ -f "/nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh" ]
-then
-	. /nfs/users/nfs_s/sl31/.linuxbrew/Homebrew/etc/profile.d/z.sh
-fi
 
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then

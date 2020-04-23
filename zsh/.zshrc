@@ -2,8 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 ZSH_DISABLE_COMPFIX=true
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 # Path to your oh-my-zsh installation.
-export ZSH="/nfs/users/nfs_s/sl31/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
