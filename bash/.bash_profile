@@ -127,6 +127,8 @@ alias gri='git rebase -i '
 # make symlink in home to current directory
 alias lnh='ln -s $(realpath .) $(realpath ~)'
 
+alias tre="tree -C | $PAGER"
+
 # requires pushbullet-bash
 # src: https://github.com/Red5d/pushbullet-bash
 alias notifyme='xargs -I {} sh -c "pushbullet push iPhone note \"Command finished with args: {}\""'
