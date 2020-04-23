@@ -70,7 +70,7 @@ ZSH_THEME="seanys_customized_sorin"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(vi-mode git zsh-256color zsh-autosuggestions fast-syntax-highlighting history-search-multi-word zsh-autopair undollar you-should-use extract history-substring-search zsh-z)
+plugins=(vi-mode git zsh-256color zsh-autosuggestions fast-syntax-highlighting history-search-multi-word zsh-autopair undollar you-should-use extract history-substring-search zsh-z expand-ealias)
 
 source $ZSH/oh-my-zsh.sh
 

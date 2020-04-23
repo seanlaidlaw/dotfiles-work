@@ -78,6 +78,18 @@ export LC_CTYPE="en_US.UTF-8",
 export LANG="en_US.UTF-8"
 
 ### ALIAS ###
+# setup ealias for fish-like abbrv in zsh
+# they have to be in a separate file
+ealias_file="$HOME/.oh-my-zsh/custom/zsh-ealiases.zsh"
+mkdir -p $(dirname "$ealias_file")
+echo '' > $ealias_file
+export YSU_IGNORED_ALIASES=()
+function ealias {
+	alias_name=$(echo "$1" | sed 's/=.*//g')
+	YSU_IGNORED_ALIASES+=("$alias_name")
+	echo "ealias $1" >> $ealias_file
+}
+
 # aliases to go places
 alias gd='cd $dotfiles'
 alias cd..='cd ../'                         # Go back 1 directory level
@@ -121,11 +133,11 @@ alias vbib="$EDITOR -c 'set syntax=bib' $QUTE_BIB_FILEPATH"
 
 # git aliases
 alias stashme='git stash --include-untracked'
-alias gdc='git diff --cached'
-alias gg='git st'
+ealias "gdc='git diff --cached'"
+ealias "gg='git st'"
 alias d='git diff'
-alias gcm='git commit -m '
-alias gcl='git clone'
+ealias "gcm='git commit -m '"
+ealias "gcl='git clone'"
 alias gap='git add --patch'
 alias gri='git rebase -i '
 
