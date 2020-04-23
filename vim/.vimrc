@@ -26,6 +26,9 @@ Plugin 'kshenoy/vim-signature' " show marks in sidebar
 " Nvim-R
 Plugin 'jalvesaq/Nvim-R'
 
+" Easymotion
+" press ,<leader><leader> then a movement key to show hints to move cursor
+Plugin 'easymotion/vim-easymotion' " press <leader><leader> to
 
 " Autocompletion
 if has('nvim')
