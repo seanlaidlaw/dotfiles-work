@@ -231,6 +231,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # to set bash/zsh ANSI colors to my preferred colorscheme
 command -v base16_tomorrow-night-eighties >/dev/null 2>&1 && base16_tomorrow-night-eighties
 
+function vimd5 {
+	$EDITOR -d <(find "$1" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /') <(find "$2" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /')
+}
+
 
 # QFC SETUP for real-time multi-directories matching
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
