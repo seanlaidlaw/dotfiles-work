@@ -21,6 +21,7 @@ Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
 
 Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
+Plugin 'neworld/vim-git-hunk-editor'
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
 
 " Nvim-R
@@ -373,6 +374,9 @@ nmap <silent><leader>gb :Gblame<cr>
 nmap <silent><leader>gc :Gcommit<cr>
 vnoremap <silent><leader>g- :'<,'>diffput<cr>
 vnoremap <silent><leader>g= :'<,'>diffget<cr>
+
+" vim-git-hunk-editor settings
+nnoremap <F11> :HunkLineToggle<cr>
 
 " gundo (revision of history saving)
 map <leader>gu :GundoToggle<CR>
