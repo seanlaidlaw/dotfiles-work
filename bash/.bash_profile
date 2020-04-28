@@ -137,6 +137,7 @@ ealias "gdc='git diff --cached'"
 ealias "gg='git st'"
 alias d='git diff'
 ealias "gcm='git commit -m '"
+alias gca='git commit --amend'
 ealias "gcl='git clone'"
 alias gap='git add --patch'
 alias gri='git rebase -i '
@@ -257,3 +258,4 @@ function vimd5 {
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
+
