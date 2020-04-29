@@ -42,3 +42,4 @@ fi
 [ "$(uname)" == "Darwin" ] && [ -d "$dotfiles/qutebrowser/.qutebrowser/userscripts/" ] && [ ! -d "/Users/$USER/Library/Application Support/qutebrowser/userscripts" ] && ln -s "$dotfiles/qutebrowser/.qutebrowser/userscripts/" "/Users/$USER/Library/Application Support/qutebrowser/userscripts"
 
 
+[ "$(uname)" == "Darwin" ] && ln -s "/Users/$USER/Library/Preferences/qutebrowser/autoconfig.yml" "$dotfiles/qutebrowser/.qutebrowser/autoconfig.yml"
