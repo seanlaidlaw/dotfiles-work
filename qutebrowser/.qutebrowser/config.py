@@ -27,6 +27,13 @@ c.scrolling.smooth = True
 ##   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'switching'
 
+c.content.notifications = False
+
+c.content.geolocation = False
+
+c.content.autoplay = False
+
+
 ## Definitions of search engines which can be used via the address bar.
 ## Maps a searchengine name (such as `DEFAULT`, or `ddg`) to a URL with a
 ## `{}` placeholder. The placeholder will be replaced by the search term,
