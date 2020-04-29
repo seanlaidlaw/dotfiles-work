@@ -63,6 +63,7 @@ c.url.searchengines = {
         'lg': 'http://libgen.io/search.php?req={}',
         'tpb': 'https://thepiratebay.org/search/{}/0/99/0',
         'bh': 'https://duckduckgo.com/?q={}+site%3Abiblehub.com+%22Strong%27s+Hebrew%22&ia=web',
+        'wh' : 'https://en.wiktionary.org/wiki/Special:Search?search={}&fulltext=Full+text+search&ns0=1',
         'z': 'https://torrents.me/s/{}:zooqle'
 }
 
