@@ -27,10 +27,25 @@ c.scrolling.smooth = True
 ##   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'switching'
 
+## Allow websites to show notifications.
+## Type: BoolAsk
+## Valid values:
+##   - true
+##   - false
+##   - ask
 c.content.notifications = False
 
+## Allow websites to request geolocations.
+## Type: BoolAsk
+## Valid values:
+##   - true
+##   - false
+##   - ask
 c.content.geolocation = False
 
+## Automatically start playing `<video>` elements. Note: On Qt < 5.11,
+## this option needs a restart and does not support URL patterns.
+## Type: Bool
 c.content.autoplay = False
 
 
