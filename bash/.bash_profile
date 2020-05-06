@@ -174,6 +174,23 @@ function cph () {
 	done
 }
 
+# moves file in first argument to folder in second argument, then create a symlink back to original
+# location. allows moving files without having worry about where they're put
+function mvln () {
+	source_file="$(rp $1)"
+	destination_file="$(rp $2)"
+
+	mv "$source_file" "$destination_file"
+	ln -s "$destination_file" "$source_file"
+}
+
+# run mvln to current dir, avoids having to write "./" every time if we have multiple files
+function mvlnh () {
+	for f in $@; do
+		mvln "$f" "./"
+	done
+}
+
 
 # make a copy of argument in tarball
 function tarball {
