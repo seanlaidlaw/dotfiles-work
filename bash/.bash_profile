@@ -231,6 +231,14 @@ function xzthis () {
 	done
 }
 
+
+function fakescan () {
+	for f in $@; do
+		rootname=$(echo "$f" | sed 's/\.[^.]*$//' | sed 's/\///g')
+		convert -density 90 "$f" -rotate 0.5 -attenuate 0.2 +noise Multiplicative -colorspace Gray "$rootname.fake_scan_output.pdf"
+	done
+}
+
 # git add and git commit in same cmd
 function gitcc () {
 # first argument is file and second is commit message
