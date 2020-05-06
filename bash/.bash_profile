@@ -140,7 +140,6 @@ ealias "gcm='git commit -m '"
 alias gca='git commit --amend'
 ealias "gcl='git clone'"
 alias gap='git add --patch'
-alias gri='git rebase -i '
 
 # make symlink in home to current directory
 alias lnh='ln -s $(realpath .) $(realpath ~)'
