@@ -161,14 +161,14 @@ function cdir () {
 
 # moves file in argument to current directory
 function mvh () {
-	for f in $@; do
+	for f in "$@"; do
 		mv "$f" .
 	done
 }
 
-# moves file in argument to current directory
+# copies file in argument to current directory
 function cph () {
-	for f in $@; do
+	for f in "$@"; do
 		cp "$f" .
 	done
 }
