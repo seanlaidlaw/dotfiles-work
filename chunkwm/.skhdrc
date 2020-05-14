@@ -3,7 +3,6 @@
 alt - return : osascript -e 'tell application "System Events" to set actiavtedTerm to ((name of processes) contains "iTerm2")' -e 'if actiavtedTerm is false then tell application "iTerm" to activate' -e 'if actiavtedTerm is true then tell application "iTerm" to create window with default profile'
 alt - b: open -a /Applications/Qutebrowser.app
 alt - d: ls ~/bin | dmenu | xargs -I {} sh -c "{}"
-alt - e: ~/bin/mediainc
 
 # enter fullscreen mode for the focused container
 alt - f : chunkc tiling::window --toggle fullscreen
