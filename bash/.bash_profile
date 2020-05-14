@@ -113,11 +113,12 @@ alias py="python3"
 alias py2="python2.7"
 alias mkdir="mkdir -pv"
 alias chmox="chmod +x"
+ealias "o='open'"
 
 # ls abbrev
-alias ls='ls --color=always'
-alias ll='ls --color=always -l --human-readable'
-alias la='ls --color=always -al --human-readable'
+export CLICOLOR=1
+alias ll='ls -l -h'
+alias la='ls -al -h'
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
