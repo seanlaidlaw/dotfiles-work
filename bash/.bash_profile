@@ -335,6 +335,10 @@ fi
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 
 
+# on receving exit signal the terminal should run this before closing
+# this quits the terminal.app process as well as closing the shell
+[ "$(uname)" = "Darwin" ] && trap '/usr/bin/osascript -e "tell application \"terminal\" to quit"' 0
+
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
