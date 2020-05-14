@@ -99,6 +99,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+
+# make jk in shell exit into command mode
 bindkey jk vi-cmd-mode
 
 # read alias and fct from bash
