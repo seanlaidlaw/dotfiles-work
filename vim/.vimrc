@@ -14,13 +14,16 @@ Plugin 'VundleVim/Vundle.vim'
 " themes
 Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
 Plugin 'chriskempson/base16-vim' " 256 color theme
+Plugin 'reedes/vim-colors-pencil' "vim pencil theme
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
+Plugin 'reedes/vim-pencil' "IA writer like environment for non-code writing
 
 Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
+Plugin 'neworld/vim-git-hunk-editor'
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
 
 " Nvim-R
@@ -374,6 +377,9 @@ nmap <silent><leader>gc :Gcommit<cr>
 vnoremap <silent><leader>g- :'<,'>diffput<cr>
 vnoremap <silent><leader>g= :'<,'>diffget<cr>
 
+" vim-git-hunk-editor settings
+nnoremap <F11> :HunkLineToggle<cr>
+
 " gundo (revision of history saving)
 map <leader>gu :GundoToggle<CR>
 let g:gundo_width = 30
@@ -394,14 +400,32 @@ let g:NERDCustomDelimiters = {
 	\ }
 
 " ALE Settings
-map <F8> :ALEToggle<CR>
+nnoremap <F8> :ALEToggle<CR>
 inoremap <F8> <esc>:ALEToggle<CR>a
 " Set flake8 as python linter and autopep8 as python fixer
 let g:ale_fixers = {'python': ['autopep8']}
 let g:ale_linters = {'python': ['flake8']}
 
 " Goyo
-map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
+let g:pencilgoyo_status=0
+nnoremap <F10> :call PencilGoyo()<CR>
+function! PencilGoyo()
+	if g:pencilgoyo_status == 0
+		set wrap nolinebreak nolist
+		set background=light
+		colorscheme pencil
+		:PencilToggle
+		:Goyo
+		let g:pencilgoyo_status=1
+	else
+		:Goyo
+		:PencilOff
+		set background=dark
+		colorscheme base16-eighties
+		set list linebreak
+		let g:pencilgoyo_status=0
+	endif
+endfunction
 
 " vim markdown <leader>p to paste img on clipboard
 nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>

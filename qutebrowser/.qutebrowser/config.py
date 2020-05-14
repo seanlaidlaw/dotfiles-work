@@ -27,6 +27,31 @@ c.scrolling.smooth = True
 ##   - switching: Show the tab bar when switching tabs.
 c.tabs.show = 'switching'
 
+## Allow websites to show notifications.
+## Type: BoolAsk
+## Valid values:
+##   - true
+##   - false
+##   - ask
+c.content.notifications = False
+
+## Allow websites to request geolocations.
+## Type: BoolAsk
+## Valid values:
+##   - true
+##   - false
+##   - ask
+c.content.geolocation = False
+
+## Automatically start playing `<video>` elements. Note: On Qt < 5.11,
+## this option needs a restart and does not support URL patterns.
+## Type: Bool
+c.content.autoplay = False
+
+# tn and te for tab moving
+config.bind('tn', 'tab-move -')
+config.bind('te', 'tab-move +')
+
 ## Definitions of search engines which can be used via the address bar.
 ## Maps a searchengine name (such as `DEFAULT`, or `ddg`) to a URL with a
 ## `{}` placeholder. The placeholder will be replaced by the search term,
@@ -56,6 +81,7 @@ c.url.searchengines = {
         'lg': 'http://libgen.io/search.php?req={}',
         'tpb': 'https://thepiratebay.org/search/{}/0/99/0',
         'bh': 'https://duckduckgo.com/?q={}+site%3Abiblehub.com+%22Strong%27s+Hebrew%22&ia=web',
+        'wh' : 'https://en.wiktionary.org/wiki/Special:Search?search={}&fulltext=Full+text+search&ns0=1',
         'z': 'https://torrents.me/s/{}:zooqle'
 }
 

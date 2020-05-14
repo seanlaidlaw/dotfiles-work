@@ -55,11 +55,11 @@
 	[diff "bin"]
 	textconv = hexdump -v -C
 	editor = nvim
-	excludesfile = ~/.gitignore_global
 	precomposeunicode = true
 	quotepath = false
 	[core]
 	pager = diff-so-fancy | less --tabs=1,5 -R
+	excludesfile = ~/.gitignore_global
 	[color "diff"]
 	  meta = "yellow bold"
 	  commit = "green bold"

@@ -113,11 +113,12 @@ alias py="python3"
 alias py2="python2.7"
 alias mkdir="mkdir -pv"
 alias chmox="chmod +x"
+ealias "o='open'"
 
 # ls abbrev
-alias ls='ls --color=always'
-alias ll='ls --color=always -l --human-readable'
-alias la='ls --color=always -al --human-readable'
+export CLICOLOR=1
+alias ll='ls -l -h'
+alias la='ls -al -h'
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
@@ -137,9 +138,10 @@ ealias "gdc='git diff --cached'"
 ealias "gg='git st'"
 alias d='git diff'
 ealias "gcm='git commit -m '"
+alias gca='git commit --amend'
 ealias "gcl='git clone'"
 alias gap='git add --patch'
-alias gri='git rebase -i '
+alias rp='readlink -f'
 
 # make symlink in home to current directory
 alias lnh='ln -s $(realpath .) $(realpath ~)'
@@ -170,6 +172,23 @@ function mvh () {
 function cph () {
 	for f in "$@"; do
 		cp "$f" .
+	done
+}
+
+# moves file in first argument to folder in second argument, then create a symlink back to original
+# location. allows moving files without having worry about where they're put
+function mvln () {
+	source_file="$(rp $1)"
+	destination_file="$(rp $2)"
+
+	mv "$source_file" "$destination_file"
+	ln -s "$destination_file" "$source_file"
+}
+
+# run mvln to current dir, avoids having to write "./" every time if we have multiple files
+function mvlnh () {
+	for f in $@; do
+		mvln "$f" "./"
 	done
 }
 
@@ -213,6 +232,14 @@ function xzthis () {
 	done
 }
 
+
+function fakescan () {
+	for f in $@; do
+		rootname=$(echo "$f" | sed 's/\.[^.]*$//' | sed 's/\///g')
+		convert -density 90 "$f" -rotate 0.5 -attenuate 0.2 +noise Multiplicative -colorspace Gray "$rootname.fake_scan_output.pdf"
+	done
+}
+
 # git add and git commit in same cmd
 function gitcc () {
 # first argument is file and second is commit message
@@ -247,6 +274,13 @@ function vimd5 {
 	$EDITOR -d <(find "$1" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /') <(find "$2" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /')
 }
 
+# scph alias to copy file from lustre to local
+function scph () {
+	cluster_prefix="farm5"
+	for f in "$@"; do
+		scp "${cluster_prefix}:/$f" .
+	done
+}
 
 # QFC SETUP for real-time multi-directories matching
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
@@ -257,3 +291,4 @@ function vimd5 {
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
     tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
+
