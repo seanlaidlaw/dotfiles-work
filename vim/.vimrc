@@ -16,6 +16,7 @@ Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
 Plugin 'chriskempson/base16-vim' " 256 color theme
 Plugin 'reedes/vim-colors-pencil' "vim pencil theme
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+Plugin 'nanotech/jellybeans.vim'
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
@@ -92,15 +93,11 @@ set laststatus=0
 set noshowmode
 
 
-colorscheme onehalfdark
+colorscheme jellybeans
 if has('nvim')
 	" Fix terminal colors
 	set t_Co=256
-	" for proper base16 support base16-shell needs to be installed
-	"git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-	let base16colorspace=256
-	set t_Co=256
-	colorscheme base16-eighties " set base16 colorscheme incase no truecolor support
+	colorscheme jellybeans " set base16 colorscheme incase no truecolor support
 endif
 
 if !empty($COLORTERM)
