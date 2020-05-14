@@ -31,8 +31,10 @@ if [[ $(ls $HOME/.oh-my-zsh/custom/plugins | wc -l) -le 1 ]]; then
     git clone "https://github.com/zpm-zsh/undollar"
     git clone "https://github.com/MichaelAquilina/zsh-you-should-use.git" "$HOME/.oh-my-zsh/custom/plugins/you-should-use"
     git clone "https://github.com/agkozak/zsh-z"
+    git clone "https://github.com/seanlaidlaw/expand-ealias.plugin.zsh.git" "expand-ealias"
     cd -
 fi
+
 
 # Vundle installation
 [ ! -d "$HOME/.vim/bundle/Vundle.vim" ] &&  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
