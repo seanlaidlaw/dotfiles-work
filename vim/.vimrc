@@ -341,6 +341,9 @@ inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 " Open my bibliography file in split
 nnoremap <leader>eb :vsp<space>$QUTE_BIB_FILEPATH<bar>set syntax=bib<CR>
 
+" Open my bash snippets in split
+nnoremap<leader>esn :vsp<space>$dotfiles/vim/snippets/sh.snippets<CR>
+
 " Open my vimrc in split
 nnoremap<leader>evv :vsp<space>~/.vimrc<CR>
 
