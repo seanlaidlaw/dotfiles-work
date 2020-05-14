@@ -114,6 +114,7 @@ alias py2="python2.7"
 alias mkdir="mkdir -pv"
 alias chmox="chmod +x"
 ealias "o='open'"
+alias grepcont="grep -Rli"
 
 # ls abbrev
 export CLICOLOR=1
