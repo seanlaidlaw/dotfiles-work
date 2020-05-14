@@ -192,7 +192,7 @@ nmap <S-Tab> :bp<CR>
 
 " close buffer on ZZ not all of vim (unless only one buffer)
 nmap ZZ :call CloseBuffer()<cr>
-function CloseBuffer()
+function! CloseBuffer()
   let num_buffers = len(getbufinfo({'buflisted':1}))
   if (num_buffers == 1)
 	  x
