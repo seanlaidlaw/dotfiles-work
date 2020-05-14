@@ -51,12 +51,12 @@ export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
 `# this shows current dir`\
 \[\e[0;33m\]❯\[\e[0m\] "\
 `#this is the symbol i use to mark end of prompt and its colored yellow`
-
 fi
 
 
 ### DEFAULT locations ###
 export dotfiles=$HOME/.dotfiles
+export dotfiles_private=$HOME/.dotfiles-private
 
 ### DEFAULT PROGRAMS ###
 export EDITOR=nvim
@@ -309,6 +309,25 @@ function dir1_files_not_in_dir2() {
 	find "$1/" "$2/" "$2/" -printf '%P\n' | sort | uniq -u | $PAGER
 }
 
+
+
+
+
+# LOAD SYSTEM SPEICIFC BASH_PROFILE
+# this allows us to keep this file as universal
+# and system specific paths can be kept apart
+my_host="$HOSTNAME"
+if [ -z "$my_host" ]; then
+	my_host="$HOST"
+fi
+
+if [ "$my_host" = "farm5-head2" ]; then
+	source "$dotfiles_private/bash/.bashrc_specific_sangerfarm5"
+fi
+
+
+
+
 # QFC SETUP for real-time multi-directories matching
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
 # This allows c-f to start qfc
@@ -316,6 +335,6 @@ function dir1_files_not_in_dir2() {
 
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-    tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
 
