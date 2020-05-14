@@ -102,6 +102,7 @@ alias .6='cd ../../../../../../'
 
 # command shorthand
 alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
+alias pwdpb="pwd | pbcopy"
 alias t="tmux new"
 alias tls="tmux ls"
 alias ta="tmux a -t"
