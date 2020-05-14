@@ -287,6 +287,24 @@ function scph () {
 	done
 }
 
+function cram2bam () {
+	for cram in "$@"
+	do
+		bamname="$(echo $cram | sed 's/.cram$//g')"
+		bsub \
+		-R"span[hosts=1]" \
+		-o cram2bam.o -e cram2bam.e  \
+		-q normal \
+		-G team176 \
+		-R 'select[mem>=2000] rusage[mem=2000]' -M2000 \
+		samtools view -b -T ~/ref/hg19_DNA_genome.fa -o "$bamname".bam "$cram"
+	done
+}
+
+function dir1_files_not_in_dir2() {
+	find "$1/" "$2/" "$2/" -printf '%P\n' | sort | uniq -u | $PAGER
+}
+
 # QFC SETUP for real-time multi-directories matching
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
 # This allows c-f to start qfc
