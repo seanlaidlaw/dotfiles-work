@@ -197,11 +197,10 @@ nmap <S-Tab> :bp<CR>
 nmap ZZ :call CloseBuffer()<cr>
 function CloseBuffer()
   let num_buffers = len(getbufinfo({'buflisted':1}))
-  echom num_buffers
   if (num_buffers == 1)
 	  x
   else
-	  bd
+	  w|bd
   endif
 endfunction
 
