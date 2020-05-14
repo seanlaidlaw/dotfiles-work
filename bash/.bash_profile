@@ -142,7 +142,11 @@ ealias "gcm='git commit -m '"
 alias gca='git commit --amend'
 ealias "gcl='git clone'"
 alias gap='git add --patch'
+alias gl='lazygit'
+
+# realpath alias
 alias rp='readlink -f'
+command -v realpath foo >/dev/null 2>&1 && alias rp='realpath '
 
 # LSF alias
 alias bsubthis6="bsub -I -R'select[mem>6000] rusage[mem=6000]' -M6000 -n 1 -R'span[hosts=1]'"
