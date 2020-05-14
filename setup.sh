@@ -9,7 +9,9 @@
 cd ~/.dotfiles
 for folder in *; do
     if [ -d "${folder}" ]; then
-        stow "${folder}"
+	if [ "${folder}" != "no_stow" ]; then
+	    stow "${folder}"
+	fi
     fi
 done
 
@@ -43,3 +45,16 @@ fi
 
 
 [ "$(uname)" == "Darwin" ] && ln -s "/Users/$USER/Library/Preferences/qutebrowser/autoconfig.yml" "$dotfiles/qutebrowser/.qutebrowser/autoconfig.yml"
+
+# set keyboard speed to lowest setting for fast arrow key movements
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+# copy over Mac Services
+if [ "$(uname)" == "Darwin" ]; then
+    for service in no_stow/Services/*; do
+	if [ -d "$service" ]; then
+	    service=$(realpath "$service")
+	    ln -s "$service" $HOME/Library/Services/
+	fi
+    done
+fi
