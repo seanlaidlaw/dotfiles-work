@@ -1,5 +1,5 @@
 # Set path
-set -gx PATH /anaconda3/bin /anaconda3/condabin /Users/sl31/homebrew/bin /usr/local/bin /Users/sl31/homebrew/Cellar/ /usr/bin /bin /usr/sbin /sbin /usr/local/munki /opt/X11/bin
+set -gx PATH /anaconda3/bin /anaconda3/condabin /Users/sl31/homebrew/bin /usr/local/bin /Users/sl31/homebrew/Cellar/ /usr/bin /bin /usr/sbin /sbin /usr/local/munki /opt/X11/bin ~/bin
 set -x EDITOR nvim
 set -x dotfiles ~/.dotfiles
 set -x QUTE_BIB_FILEPATH ~/.qutebrowser_bibliography
@@ -7,14 +7,24 @@ set -x PAGER bat
 
 # abbreviations to go places
 abbr gd "cd $dotfiles"
+abbr cd.. 'cd ../'                         # Go back 1 directory level
+abbr .. 'cd ../'                           # Go back 1 directory level
+abbr ... 'cd ../../'                       # Go back 2 directory levels
+abbr .3 'cd ../../../'                     # Go back 3 directory levels
+abbr .4 'cd ../../../../'                  # Go back 4 directory levels
+abbr .5 'cd ../../../../../'               # Go back 5 directory levels
+abbr .6 'cd ../../../../../../'
+
 
 # command shorthand
+alias rm "rm -iv"
 alias pk "env HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 abbr t "tmux new"
 abbr tls "tmux ls"
 abbr ta "tmux a -t"
-abbr v "$EDITOR"
+alias v "$EDITOR"
 alias c "$PAGER"
+abbr psed "perl -p -e 's/"
 abbr zz "omf reload"
 abbr py "python3"
 abbr py2 "python2.7"
@@ -22,6 +32,7 @@ abbr pwdpb "pwd | pbcopy"
 alias mkdir "mkdir -pv"
 abbr chmox "chmod +x"
 alias ejectall "osascript -e 'tell application \"Finder\" to eject (every disk whose ejectable is true)'"
+alias lnh 'ln -s (realpath .) (realpath ~)'
 
 # easy file edit
 abbr vv "$EDITOR $dotfiles/vim/.vimrc"
@@ -40,9 +51,11 @@ abbr stashme "git stash --include-untracked"
 abbr gdc "git diff --cached"
 abbr gg "git st"
 abbr d "git diff"
+abbr gca "git commit --amend"
+abbr grc "git rebase --continue"
+abbr gsp "git stash pop"
 abbr gcm "git commit -m"
 abbr gap "git add -p"
-alias gri "git rebase -i "
 
 # requires pushbullet-bash
 # src: https://github.com/Red5d/pushbullet-bash
@@ -86,8 +99,47 @@ function tarxz
 	tar cvJf "$rootname.tar.xz" $argv
 end
 
+function gzthis
+    for f in $argv
+	gzip -9 "$f"
+    end
+end
+
+function xzthis
+    for f in $argv
+	xz -9 --extreme --threads=1 "$f"
+    end
+end
+
+
 
 function cd
 	if builtin cd $argv; and ls -F
 	end
+end
+
+function cdir
+	cd (dirname "$argv[1]")
+end
+
+
+function symlink
+	ln -s (realpath $argv[1]) (realpath $argv[2])
+end
+
+function rp
+    realpath "$argv" | pbcopy
+end
+
+function gri
+    git stash --include-untracked && \
+    echo "" && \
+    echo "changes in git directory have been stashed, remember to git stash pop' after rebase" && \
+    git stash list --color=always --pretty="%C(green)%h %>(14)%Cblue%cr %C(white)%gs" | head -n 1 && \
+    echo "" && \
+    git rebase -i "$argv[1]"~1
+end
+
+function wdiffarg
+    diff -u (echo "$argv[1]" | psub) (echo "$argv[2]" | psub) | colordiff | diff-highlight
 end

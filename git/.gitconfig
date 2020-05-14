@@ -18,8 +18,9 @@
 	add = add -v
 	wdiff = diff --word-diff=color
 	signto = rebase --exec 'git commit --amend --no-edit -n -S' -i
-	originate = log --all -p --reverse --source -S
+	originate = log --branches --tags -p --reverse --source -S
 	cpr = cherry-pick --strategy=recursive -X theirs
+	reorder = "!GIT_SEQUENCE_EDITOR=\"sed -i -n 'h;1n;2p;g;p'\" git rebase -i HEAD~2"
 [core]
 	attributesFile = ~/.gitattributes
 	ignorecase = true
@@ -54,11 +55,11 @@
 	[diff "bin"]
 	textconv = hexdump -v -C
 	editor = nvim
-	excludesfile = ~/.gitignore_global
-	precomposeunicode = true
+
 	quotepath = false
 	[core]
 	pager = diff-so-fancy | less --tabs=1,5 -R
+	excludesfile = ~/.gitignore_global
 	[color "diff"]
 	  meta = "yellow bold"
 	  commit = "green bold"

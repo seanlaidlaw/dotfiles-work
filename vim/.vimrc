@@ -1,3 +1,7 @@
+" set file encoding to avoid listchar errors in linux
+scriptencoding utf-8
+set encoding=utf-8
+
 " Plugin Management
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -8,14 +12,52 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " themes
-Plugin 'tyrannicaltoucan/vim-deep-space'
+Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
+Plugin 'chriskempson/base16-vim' " 256 color theme
+Plugin 'reedes/vim-colors-pencil' "vim pencil theme
+Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
+Plugin 'reedes/vim-pencil' "IA writer like environment for non-code writing
 
 Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
+Plugin 'neworld/vim-git-hunk-editor'
 Plugin 'kshenoy/vim-signature' " show marks in sidebar
+
+" Nvim-R
+Plugin 'jalvesaq/Nvim-R'
+
+" Easymotion
+" press ,<leader><leader> then a movement key to show hints to move cursor
+Plugin 'easymotion/vim-easymotion' " press <leader><leader> to
+" Tmux interaction
+Plugin 'benmills/vimux'
+
+" Autocompletion
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim'
+else  " these allow deoplete to work with vim8
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+
+" machine-learning based tool for autocompletion
+Plugin 'tbodt/deoplete-tabnine'
+" download TabNine binaries if not present
+if !isdirectory("~/.vim/bundle/deoplete-tabnine/binaries")
+    call system("bash ~/.vim/bundle/deoplete-tabnine/install.sh")
+endif
+
+
+" Snippet support for deoplete
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
+" Autorun line by line and show result
+Plugin 'metakirby5/codi.vim'
 
 " linter
 Plugin 'w0rp/ale'
@@ -41,10 +83,6 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""
 syntax on
 set background=dark
-colorscheme deep-space
-
-" colorscheme specific settings
-let g:deepspace_italics=1
 
 set list	" show invisible characters
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
@@ -53,16 +91,31 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set laststatus=0
 set noshowmode
 
-" Fix terminal colors
-set t_Co=256
+
+colorscheme onehalfdark
+if has('nvim')
+	" Fix terminal colors
+	set t_Co=256
+	" for proper base16 support base16-shell needs to be installed
+	"git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+	let base16colorspace=256
+	set t_Co=256
+	colorscheme base16-eighties " set base16 colorscheme incase no truecolor support
+endif
+
 if !empty($COLORTERM)
 	" For Neovim 0.1.3 and 0.1.4
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 	" for vim 8 / Or if you have Neovim >= 0.1.5
 	if (has("termguicolors"))
-	set termguicolors
+		set termguicolors
+		colorscheme deep-space
+
+		" colorscheme specific settings
+		let g:deepspace_italics=1
 	endif
+
 endif
 
 " Correct RGB escape codes for vim inside tmux
@@ -93,10 +146,11 @@ set wrapscan	" Searches wrap around end of file
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
 let mapleader=","
 
-set mouse=a	" Allow mouse
+set mouse=i	" Allow mouse in insert mode
 set autoindent	" Auto-indent new lines
 set smarttab	" Enable smart-tabs
 set shiftround " round indent to a multiple of 'shiftwidth'
@@ -129,12 +183,28 @@ vmap S :s//g<Left><Left>
 " Opposite of J to split lines
 map K r<Enter>
 
+" Replace word under cursor with clipboard
+map <leader>cw ve"0px
+
 " press gm to go to mark (` is hard to press on my keyboard)
 nmap gm `
 
 " TAB and Shift-TAB in normal mode cycle buffers
 nmap <Tab> :bn<CR>
-nmap <S-Tab> :bp<>
+nmap <S-Tab> :bp<CR>
+
+" close buffer on ZZ not all of vim (unless only one buffer)
+nmap ZZ :call CloseBuffer()<cr>
+function CloseBuffer()
+  let num_buffers = len(getbufinfo({'buflisted':1}))
+  if (num_buffers == 1)
+	  x
+  else
+	  w|bd
+  endif
+endfunction
+
+
 
 " allow indenting of code blocks without losing selection each time
 vnoremap < <gv
@@ -160,7 +230,7 @@ set diffopt+=vertical
 
 " Folding
 set foldenable " enable folding
-set foldmethod=indent
+set foldmethod=manual
 set foldlevelstart=10 " open most folds by default
 set foldnestmax=10 " 10 nested fold Max
 
@@ -169,6 +239,13 @@ nnoremap <space> za
 
 " save session : saves windows and locations. Reopen with "nvim -S"
 nnoremap <leader>s :mksession<CR>
+
+" save folds
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -257,11 +334,14 @@ endfunction
 
 
 " Navigating with guides
-inoremap <Tab><Space> <Esc>/<++><Enter>"_c4l
+inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 
 " File shortcuts
 " Open my bibliography file in split
 nnoremap <leader>eb :vsp<space>$QUTE_BIB_FILEPATH<bar>set syntax=bib<CR>
+
+" Open my bash snippets in split
+nnoremap<leader>esn :vsp<space>$dotfiles/vim/snippets/sh.snippets<CR>
 
 " Open my vimrc in split
 nnoremap<leader>evv :vsp<space>~/.vimrc<CR>
@@ -274,6 +354,7 @@ nnoremap <leader>zz :source ~/.vimrc<cr>
 augroup Shebang
 	autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl># -*- coding: utf-8 -*-\<nl>\"|$
 	autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
+	autocmd BufNewFile *.r 0put =\"#!/usr/bin/env Rscript\<nl>\"|$
 	autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
@@ -298,6 +379,9 @@ nmap <silent><leader>gc :Gcommit<cr>
 vnoremap <silent><leader>g- :'<,'>diffput<cr>
 vnoremap <silent><leader>g= :'<,'>diffget<cr>
 
+" vim-git-hunk-editor settings
+nnoremap <F11> :HunkLineToggle<cr>
+
 " gundo (revision of history saving)
 map <leader>gu :GundoToggle<CR>
 let g:gundo_width = 30
@@ -318,15 +402,72 @@ let g:NERDCustomDelimiters = {
 	\ }
 
 " ALE Settings
-map <F8> :ALEToggle<CR>
+nnoremap <F8> :ALEToggle<CR>
 inoremap <F8> <esc>:ALEToggle<CR>a
 " Set flake8 as python linter and autopep8 as python fixer
 let g:ale_fixers = {'python': ['autopep8']}
 let g:ale_linters = {'python': ['flake8']}
 
 " Goyo
-map <F10> :set wrap linebreak nolist <bar> Goyo<CR>
+let g:pencilgoyo_status=0
+nnoremap <F10> :call PencilGoyo()<CR>
+function! PencilGoyo()
+	if g:pencilgoyo_status == 0
+		set wrap nolinebreak nolist
+		set background=light
+		colorscheme pencil
+		:PencilToggle
+		:Goyo
+		let g:pencilgoyo_status=1
+	else
+		:Goyo
+		:PencilOff
+		set background=dark
+		colorscheme base16-eighties
+		set list linebreak
+		let g:pencilgoyo_status=0
+	endif
+endfunction
 
 " vim markdown <leader>p to paste img on clipboard
 nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
+" Nvim-R settings
+let maplocalleader = ','
+command! RStart let oldft=&ft | set ft=r | exe 'set ft='.oldft | let b:IsInRCode = function("DefaultIsInRCode") | normal <LocalLeader>rf
+au BufReadPost,BufNewFile *.r,*.R,*.Rmd normal ,rf
+nmap <Space> <Plug>RDSendLine
+vmap <Space> <Plug>RDSendSelection
+nmap <LocalLeader>cl <Plug>RClearAll
+nmap <LocalLeader>ll <Plug>RNLeftPart
+
+
+
+" deoplete Settings
+if has('nvim')
+	let g:deoplete#enable_at_startup = 1
+
+	" Enable snipMate compatibility feature.
+	let g:neosnippet#enable_snipmate_compatibility = 1
+
+	" tell neosnippet snippet directory and symlink r snippets to rstudio dir
+	if !filereadable('~/.R/snippets')
+		call system("ln $dotfiles/vim/snippets/r.snippets $HOME/.R/snippets")
+	endif
+	let g:neosnippet#snippets_directory="$dotfiles/vim/snippets"
+
+
+	" use tab to expand current suggestion or suggested snippet
+	imap <expr><TAB>
+		\ neosnippet#expandable_or_jumpable() ?
+		\    "\<Plug>(neosnippet_expand_or_jump)" :
+			\ 	  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+endif
+
+let g:codi#interpreters = {
+	\ 'python': {
+		\ 'bin': 'python3',
+		\ 'prompt': '^\(>>>\|\.\.\.\) ',
+		\ },
+	\ }

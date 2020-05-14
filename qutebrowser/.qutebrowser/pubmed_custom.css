@@ -1,0 +1,72 @@
+/*body { font-family: Ideal Sans Book, Helvetica, sans-serif; }*/
+.grid .lit-style.content {
+	font-family: Tiempos,Georgia,serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.5em;
+}
+.grid .lit-style h2 {
+    font-size: 20px;
+    font-weight: 700 !important;
+    color: #ed3725;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-family: Solido,Arial,sans-serif;
+}
+
+h2 {
+    /*color: #ed3725!important;*/
+    color: #a04562!important;
+	border-bottom-color: #fff!important;
+}
+h3 {
+    color: #a04562!important;
+    font-family: Solido, Arial,sans-serif;
+}
+.NLMLogo {
+visibility: hidden;
+}
+
+.contrib-group a {
+font-size: 0.9em!important;
+color: black!important;
+}
+.grid {
+max-width: 1400px!important;
+}
+.grid .sec a {
+    font-family: Tiempos,Georgia,serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #ed3725;
+    text-decoration: none
+}
+.portlet ul li a {
+    text-decoration: none;
+    font-family: Solido, Arial,sans-serif;
+	font-size: 1.1em;
+    /*height: auto!important;*/
+	overflow: visible!important;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+}
+
+.portlet {
+    border-top: .2em solid #a04562!important;
+}
+.head, .sub-head {
+    border-bottom: .1em solid #a04562!important;
+}
+.pmc-page-banner {
+	visibility: hidden;
+    height: 0px;
+}
+
+.portlet li {
+    height: 2.5em;
+    overflow: visible!important;
+	margin-top:0.5em;
+	border-bottom: 0px!important;
+}
+
