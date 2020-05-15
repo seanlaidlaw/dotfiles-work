@@ -99,6 +99,15 @@ config.bind('<F5>', 'spawn --userscript readability')
 config.bind('ZZ', 'quit --save')
 config.bind('x', 'tab-close')
 
+
+
+## Load private dotfile settings for site specific options  qb only recognises
+# relative paths so lets assume .dotfiles-private is in ~/
+config.source("../.dotfiles-private/qutebrowser/config.py")
+
+
+
+
 # Use custom dark solarized theme
 c.content.user_stylesheets = [
     'solarized-dark.css',
