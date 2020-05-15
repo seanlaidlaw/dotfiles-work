@@ -138,7 +138,7 @@ alias vbib="$EDITOR -c 'set syntax=bib' $QUTE_BIB_FILEPATH"
 alias stashme='git stash --include-untracked'
 ealias "gdc='git diff --cached'"
 ealias "gg='git st'"
-alias d='git diff'
+alias d='git diff --ignore-all-space'
 ealias "gcm='git commit -m '"
 alias gca='git commit --amend'
 ealias "gcl='git clone'"
