@@ -285,11 +285,19 @@ function vimd5 {
 	$EDITOR -d <(find "$1" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /') <(find "$2" -type f -exec md5sum {} + | sort -k 2 | sed 's/ .*\// /')
 }
 
+
+cluster_prefix="farm5"
 # scph alias to copy file from lustre to local
 function scph () {
-	cluster_prefix="farm5"
 	for f in "$@"; do
 		scp "${cluster_prefix}:/$f" .
+	done
+}
+
+# scpr alias to copy file from lustre to local
+function scpr () {
+	for f in "$@"; do
+		scp -r "${cluster_prefix}:/$f" .
 	done
 }
 
