@@ -301,6 +301,15 @@ function scpr () {
 	done
 }
 
+function ocrme () {
+	# requires tesseract OCR engine and ocrmypdf
+	for f in "$@"; do
+		filename_orig=$(echo "$f" | sed 's/\.pdf$//g' | sed 's/$/ - Original.pdf/g')
+		filename_ocr=$(echo "$f" | sed 's/\.pdf$//g' | sed 's/$/ - OCR.pdf/g')
+		ocrmypdf -l eng+fra --rotate-pages --deskew "$f" "$filename_ocr" && mv "$f" "$filename_orig"
+	done
+}
+
 function cram2bam () {
 	for cram in "$@"
 	do
