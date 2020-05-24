@@ -92,6 +92,10 @@ config.bind('<Ctrl-e>', 'set content.user_stylesheets "" ;; set colors.webpage.b
 config.bind('<Ctrl-r>', 'set content.user_stylesheets "" ;; set content.user_stylesheets  wikipedia_custom.css')
 config.bind('<Ctrl-t>', 'set content.user_stylesheets "" ;; set content.user_stylesheets  pubmed_custom.css')
 
+# bindings from dotfiles-private
+# <ctrl-s> = save to instapaper
+
+config.bind('<Ctrl-l>', 'download-clear')
 config.bind('<Ctrl-p>', 'set content.pdfjs false')
 config.bind('<F1>', 'spawn --userscript unpaywall')
 config.bind('<F2>', 'spawn --userscript getbib')
