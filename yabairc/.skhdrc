@@ -1,4 +1,5 @@
 alt - return : open -na "Terminal.app"
+shift + alt - a: open -a /Applications/Anki-QuickAdd.app
 alt - b: open -a /Applications/Qutebrowser.app
 alt - d: ls ~/bin | dmenu | xargs -I {} sh -c "{}"
 
