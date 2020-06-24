@@ -104,7 +104,7 @@ alias .6='cd ../../../../../../'
 # command shorthand
 alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
 alias pwdpb="pwd | pbcopy"
-alias t="tmux new"
+alias t="tmux new zsh"
 alias tls="tmux ls"
 alias ta="tmux a -t"
 alias v="$EDITOR"
@@ -360,6 +360,6 @@ fi
 
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux
 fi
 
