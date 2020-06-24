@@ -14,3 +14,8 @@ Thumbs.db
 
 # compiled python
 *.pyc
+
+
+# Rprojects
+*.Rproj
+*.Rproj.user/
