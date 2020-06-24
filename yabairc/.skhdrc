@@ -1,7 +1,7 @@
 alt - return: source ~/.zshrc && open -na "$TERMINAL"
 shift + alt - a: open -a /Applications/Anki-QuickAdd.app
 alt - b: open -a /Applications/Qutebrowser.app
-alt - d: ls ~/bin | xmenu | xargs -I {} sh -c "{}"
+alt - d: source ~/.zshrc && ls ~/bin | xmenu | xargs -I {} sh -c "{}"
 
 lctrl + alt - r: skhd --reload && osascript -e 'display notification "skhd reloaded!"'
 
