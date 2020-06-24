@@ -144,6 +144,7 @@ alias d='git diff --ignore-all-space'
 ealias "gcm='git commit -m '"
 alias gca='git commit --amend'
 ealias "gcl='git clone'"
+ealias "grc='git rebase --continue'"
 alias gap='git add --patch'
 alias gl='lazygit'
 
