@@ -39,6 +39,9 @@ fi
 # Vundle installation
 [ ! -d "$HOME/.vim/bundle/Vundle.vim" ] &&  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+# TPM installation
+[ ! -d "$HOME/.tmux/plugins/tpm" ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Installing xmenu
 # mkdir -p ~/Applications && cd ~/Applications && git clone https://github.com/uluyol/xmenu.git && cd xmenu && make
 
