@@ -346,6 +346,8 @@ if [ "$my_host" = "farm5-head2" ]; then
 	source "$dotfiles_private/bash/.bashrc_specific_sangerfarm5"
 elif [ ${my_host#*$mib113} ]; then
 	source "$dotfiles_private/bash/.bashrc_specific_sangermac"
+elif [ "$my_host" = "SeanMacAir.local" ]; then
+	source "$dotfiles_private/bash/.bashrc_specific_mba2013"
 fi
 
 
