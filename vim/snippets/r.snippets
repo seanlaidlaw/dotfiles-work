@@ -131,6 +131,9 @@ snippet selectcol
 	${1:df} = ${1:df}[,grepl("_A$",names(${1:df}))]
 
 
+snippet delist
+    paste(unlist(${1:listname}, collapse=", ")
+
 snippet biomart
 	library(biomaRt)
 	ensembl <- useMart("ensembl", dataset="hsapiens_gene_ensembl")
