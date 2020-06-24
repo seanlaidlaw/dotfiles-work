@@ -432,7 +432,11 @@ nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 " Nvim-R settings
 let maplocalleader = ','
 command! RStart let oldft=&ft | set ft=r | exe 'set ft='.oldft | let b:IsInRCode = function("DefaultIsInRCode") | normal <LocalLeader>rf
-au BufReadPost,BufNewFile *.r,*.R,*.Rmd normal ,rf
+if &diff
+else
+	au BufReadPost,BufNewFile *.r,*.R,*.Rmd normal ,rf
+endif
+
 nmap <Space> <Plug>RDSendLine
 vmap <Space> <Plug>RDSendSelection
 nmap <LocalLeader>cl <Plug>RClearAll
