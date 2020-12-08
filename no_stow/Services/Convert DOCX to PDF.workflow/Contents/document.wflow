@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>419</string>
+	<string>444.42</string>
 	<key>AMApplicationVersion</key>
-	<string>2.6</string>
+	<string>2.9</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -100,14 +100,12 @@
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>320.000000:308.000000</string>
+				<string>524.000000:360.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -176,8 +174,6 @@ do
   textutil -convert html -output "$filepathWithoutExtension.html" "$f"
   # Convert the file into a PDF
   cupsfilter "$filepathWithoutExtension.html" &gt; "$filepathWithoutExtension.pdf"
-  # Remove the original file and the temporary HTML file, leaving only the PDF
-  rm "$f" "$filepathWithoutExtension.html" &gt;/dev/null
 done
 </string>
 					<key>CheckedForUserDefaultShell</key>
@@ -292,9 +288,9 @@ done
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>320.000000:671.000000</string>
+				<string>524.000000:542.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -302,7 +298,7 @@ done
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>78D272A4-989B-49C5-9C5F-885839618FD5</key>
+		<key>03239C8C-4F61-42DF-868A-A76BBF70C25F</key>
 		<dict>
 			<key>from</key>
 			<string>3DF3A7AB-9FC5-4885-B980-4DA5F69BBB5B - 3DF3A7AB-9FC5-4885-B980-4DA5F69BBB5B</string>
@@ -312,6 +308,27 @@ done
 	</dict>
 	<key>workflowMetaData</key>
 	<dict>
+		<key>applicationBundleID</key>
+		<string>com.apple.finder</string>
+		<key>applicationBundleIDsByPath</key>
+		<dict>
+			<key>/System/Library/CoreServices/Finder.app</key>
+			<string>com.apple.finder</string>
+		</dict>
+		<key>applicationPath</key>
+		<string>/System/Library/CoreServices/Finder.app</string>
+		<key>applicationPaths</key>
+		<array>
+			<string>/System/Library/CoreServices/Finder.app</string>
+		</array>
+		<key>inputTypeIdentifier</key>
+		<string>com.apple.Automator.fileSystemObject</string>
+		<key>outputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>presentationMode</key>
+		<integer>15</integer>
+		<key>processesInput</key>
+		<integer>0</integer>
 		<key>serviceApplicationBundleID</key>
 		<string>com.apple.finder</string>
 		<key>serviceApplicationPath</key>
@@ -321,6 +338,10 @@ done
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>systemImageName</key>
+		<string>NSActionTemplate</string>
+		<key>useAutomaticInputType</key>
 		<integer>0</integer>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>
