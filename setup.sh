@@ -63,3 +63,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	fi
     done
 fi
+
+# setup Ubersicht
+mkdir -p "$HOME/Library/Application Support/Übersicht/widgets"
+cd "$HOME/Library/Application Support/Übersicht/widgets" && git clone "https://github.com/seanlaidlaw/simple-bar.git"
