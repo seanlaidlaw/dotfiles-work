@@ -74,6 +74,9 @@ plugins=(vi-mode git zsh-256color zsh-autosuggestions fast-syntax-highlighting h
 
 source $ZSH/oh-my-zsh.sh
 
+# load fzf for zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
