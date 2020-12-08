@@ -104,7 +104,7 @@ alias .6='cd ../../../../../../'
 # command shorthand
 alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
 alias pwdpb="pwd | pbcopy"
-alias t="tmux new"
+alias t="tmux new zsh"
 alias tls="tmux ls"
 alias ta="tmux a -t"
 alias v="$EDITOR"
@@ -344,7 +344,7 @@ fi
 
 if [ "$my_host" = "farm5-head2" ]; then
 	source "$dotfiles_private/bash/.bashrc_specific_sangerfarm5"
-elif [ ${my_host#*$mib113} ]; then
+elif [ "$my_host" = "mib113966i" ]; then
 	source "$dotfiles_private/bash/.bashrc_specific_sangermac"
 elif [ "$my_host" = "SeanMacAir.local" ]; then
 	source "$dotfiles_private/bash/.bashrc_specific_mba2013"
@@ -364,6 +364,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux
 fi
 
