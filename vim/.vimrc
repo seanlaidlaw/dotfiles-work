@@ -353,6 +353,11 @@ augroup Shebang
 	autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env bash\<nl>\"|$
 	autocmd BufNewFile *.r 0put =\"#!/usr/bin/env Rscript\<nl>\"|$
 	autocmd BufNewFile *.tex 0put =\"%&plain\<nl>\"|$
+
+	" for new marp.md file: auto read template and start marp server in template directory
+	autocmd BufNewFile *.marp.md r ~/Templates/marp/template.marp.md | w| !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
+	autocmd BufRead *.marp.md !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
+
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
 	autocmd BufNewFile *.Rmd r ~/Templates/Rmarkdown/university_paper.Rmd |!cp ~/Templates/Rmarkdown/sll-citation-style.csl "$(greadlink -f $(dirname %))"; ln ~/.qutebrowser_bibliography mybibliography.bib
