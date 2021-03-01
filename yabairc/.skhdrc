@@ -1,6 +1,6 @@
-alt - return: open -a "Terminal.app"
+# alt - return: source ~/.zshrc && open -na "$TERMINAL"
+alt - t: open -na "Terminal.app"
 shift + alt - a: open -a /Applications/Anki-QuickAdd.app
-alt - b: open -a /Applications/Qutebrowser.app
 alt - v: open -na "MacVim.app"
 
 lctrl + alt - r: skhd --reload && osascript -e 'display notification "skhd reloaded!"'
