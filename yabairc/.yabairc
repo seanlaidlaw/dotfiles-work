@@ -15,6 +15,8 @@ yabai -m config external_bar all:26:0
 
 # make these apps only on certain space
 yabai -m rule --add app="Evernote" space=5
+yabai -m rule --add app="Notion" space=5
+yabai -m rule --add app="Airmail" space=6
 yabai -m rule --add app="Spotify" space=6
 
 
@@ -78,6 +80,9 @@ yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
 yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
 yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
 yabai -m rule --add label="VirtualBox" app="^VirtualBox$" manage=off
+yabai -m rule --add label="Self Service" app="^Self Service$" manage=off
+yabai -m rule --add label="Installer" app="^Installer$" manage=off
+yabai -m rule --add label="TextExpander" app="^TextExpander$" manage=off
 
 
 ## To work with Ubersicht simple-bar
