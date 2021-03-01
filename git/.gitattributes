@@ -14,3 +14,7 @@
 *.exe diff=bin
 *.png diff=bin
 *.jpg diff=bin
+
+*.ipynb	diff=jupyternotebook
+
+*.ipynb	merge=jupyternotebook
