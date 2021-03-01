@@ -11,12 +11,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'mhinz/vim-startify' " starter page with links to recent files
+
 " themes
 Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
 Plugin 'chriskempson/base16-vim' " 256 color theme
 Plugin 'reedes/vim-colors-pencil' "vim pencil theme
 Plugin 'sonph/onehalf', {'rtp': 'vim/'}
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
 
 " writing
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
