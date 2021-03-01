@@ -66,6 +66,9 @@ Plugin 'metakirby5/codi.vim'
 " linter
 Plugin 'w0rp/ale'
 
+" underline letters to seek to
+Plugin 'unblevable/quick-scope'
+
 " color code highlighter
 Plugin 'lilydjwg/colorizer'
 
