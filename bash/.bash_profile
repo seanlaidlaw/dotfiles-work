@@ -78,6 +78,16 @@ export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8",
 export LANG="en_US.UTF-8"
 
+
+# setup easy motion like in vim
+# load easy-motion plugin
+source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
+
+# map vi-easy-motion to space bar
+bindkey -M vicmd ' ' vi-easy-motion
+
+
+
 ### ALIAS ###
 # setup ealias for fish-like abbrv in zsh
 # they have to be in a separate file
