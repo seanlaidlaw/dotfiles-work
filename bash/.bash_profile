@@ -124,6 +124,7 @@ alias headerless="sed '1d'" # removes first line of output
 export CLICOLOR=1
 alias ll='ls -l -h'
 alias la='ls -al -h'
+alias thor='ls -thor'
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
