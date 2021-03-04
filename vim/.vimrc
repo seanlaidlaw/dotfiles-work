@@ -426,6 +426,23 @@ function! PencilGoyo()
 	endif
 endfunction
 
+" Easy select and copy from terminal
+" this removes line numbers and indent symbols
+let g:select_mode_status=0
+nnoremap <F3> :call SelectModeToggle()<CR>
+function! SelectModeToggle()
+	if g:select_mode_status == 0
+		set wrap nolinebreak nolist
+		set relativenumber! number!	" Show line numbers
+		set showbreak=
+		let g:select_mode_status=1
+	else
+		set list linebreak
+		set relativenumber number	" Show line numbers
+		set showbreak=+++	" Wrap-broken line prefix
+		let g:select_mode_status=0
+	endif
+endfunction
 " vim markdown <leader>p to paste img on clipboard
 nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 

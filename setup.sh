@@ -63,3 +63,6 @@ if [ "$(uname)" == "Darwin" ]; then
 	fi
     done
 fi
+
+# when python installed install must-have programs
+#pip install --user magic-wormhole
