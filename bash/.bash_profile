@@ -364,6 +364,10 @@ fi
 # This allows c-f to start qfc
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 
+# allow pyenv control over PATH, necessary to get right versions of python working
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux

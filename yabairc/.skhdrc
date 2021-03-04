@@ -1,7 +1,7 @@
-alt - return: source ~/.zshrc && open -na "$TERMINAL"
+alt - return: open -a "Terminal.app"
 shift + alt - a: open -a /Applications/Anki-QuickAdd.app
 alt - b: open -a /Applications/Qutebrowser.app
-alt - d: source ~/.zshrc && ls ~/bin | xmenu | xargs -I {} sh -c "{}"
+alt - v: open -na "MacVim.app"
 
 lctrl + alt - r: skhd --reload && osascript -e 'display notification "skhd reloaded!"'
 
@@ -17,9 +17,13 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
-shift + lctrl - left : yabai -m window --display 2 && yabai -m display --focus 2
+shift + alt - right : yabai -m display --focus 1
+shift + alt - left : yabai -m display --focus 2
+#shift + alt - down : yabai -m display --focus 3
+
 shift + lctrl - right : yabai -m window --display 1 && yabai -m display --focus 1
-shift + lctrl - down : yabai -m window --display 3 && yabai -m display --focus 3
+shift + lctrl - left : yabai -m window --display 2 && yabai -m display --focus 2
+#shift + lctrl - down : yabai -m window --display 3 && yabai -m display --focus 3
 
 # Move focus container to workspace
 shift + alt - m : yabai -m window --space last && yabai -m space --focus last
