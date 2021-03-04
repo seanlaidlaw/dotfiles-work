@@ -117,6 +117,8 @@ alias mkdir="mkdir -pv"
 alias chmox="chmod +x"
 ealias "o='open'"
 alias grepcont="grep -Rli"
+alias spaces2tab="perl -pe 's/ +/\t/g'" # replaces spaces with tabs
+alias headerless="sed '1d'" # removes first line of output
 
 # ls abbrev
 export CLICOLOR=1
