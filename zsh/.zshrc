@@ -108,5 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # make jk in shell exit into command mode
 bindkey jk vi-cmd-mode
 
+# bind ctrl-q to suspend currently written command to allow
+# running another command then putting # back the command
+bindkey "^Q" push-input
+
 # read alias and fct from bash
 emulate sh -c 'source ~/.bash_profile'
