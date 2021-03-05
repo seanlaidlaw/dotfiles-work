@@ -243,6 +243,9 @@ nnoremap <space> za
 " save session : saves windows and locations. Reopen with "nvim -S"
 nnoremap <leader>s :mksession<CR>
 
+" get out of neovim :terminal using Esc
+tnoremap <Esc> <C-\><C-n>
+
 " save folds
 augroup remember_folds
   autocmd!
