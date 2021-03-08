@@ -218,6 +218,11 @@ function mvlnh () {
 	done
 }
 
+function esp () {
+	trigger="$1"
+	replacement="$2"
+	printf "\n\n  - trigger: \"${trigger}\"\n    replace: \"${replacement}\"\n" >> "$HOME/Library/Preferences/espanso/default.yml"
+}
 
 # make a copy of argument in tarball
 function tarball {
