@@ -378,6 +378,12 @@ augroup Shebang
 augroup END
 
 
+" insert template text on creating new some filetypes
+augroup FiletypeMacros
+	autocmd FileType python nnoremap <C-P> vEyopa)0iprint(0
+	autocmd FileType python nnoremap <C-m> vEy0Pa = 0
+	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
+augroup END
 
 """"""""""""""""""""""""""""""
 "     PLUGIN SETTINGS        "
