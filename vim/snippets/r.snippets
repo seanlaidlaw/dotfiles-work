@@ -122,6 +122,9 @@ snippet swapcolname
 	i1 <- match(colnames(${1:df1}), ${2:annotationdf}\$ ${3:oldcolnames}, nomatch=0)
 	colnames(${1:df1})[i1] <- as.character(${2:annotationdf}\$ ${4:newcolnames}[i1])
 
+snippet subsetannot
+    subset_annot = annot[rownames(annot) %in% colnames(matrix_raw),]
+
 snippet selectcol
 	# by colname
 	${1:df} = subset(${1:df}, select = c(${2:col1name},${3:col2name}))
