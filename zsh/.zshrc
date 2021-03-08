@@ -122,6 +122,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+# bind asc to change first word of command
+bindkey -s ,cw '\e0cW'
+bindkey -s ,cl '\e0cWll\eA^M'
+bindkey -s ,cc '\e0cWc\eA^M'
+bindkey -s ,c8 '\e$F/C/*'
+
+# map double escape to fuck command
+# src: https://github.com/nvbn/thefuck
+bindkey -s '\e\e' 'fuck^M'
 
 # make jk in shell exit into command mode
 bindkey jk vi-cmd-mode
