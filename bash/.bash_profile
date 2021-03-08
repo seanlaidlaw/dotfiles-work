@@ -132,6 +132,8 @@ alias grepcont="grep -Rli"
 # ls abbrev
 export CLICOLOR=1
 alias ll='ls -l -h'
+command -v exa >/dev/null 2>&1 && alias ll='exa --icons -l --git'
+command -v exa >/dev/null 2>&1 && alias ls='exa --icons'
 alias la='ls -al -h'
 
 # easy file edit aliases
