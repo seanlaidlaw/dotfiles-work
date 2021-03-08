@@ -66,6 +66,8 @@ Plugin 'metakirby5/codi.vim'
 " linter
 Plugin 'w0rp/ale'
 
+Plugin 'darfink/vim-plist'
+
 " underline letters to seek to
 Plugin 'unblevable/quick-scope'
 
