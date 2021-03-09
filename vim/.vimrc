@@ -436,7 +436,7 @@ function! PencilGoyo()
 		set wrap nolinebreak nolist
 		set background=light
 		colorscheme pencil
-		:PencilToggle
+		:PencilSoft
 		:Goyo
 		let g:pencilgoyo_status=1
 	else
