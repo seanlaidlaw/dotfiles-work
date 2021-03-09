@@ -25,6 +25,7 @@ Plugin 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
 Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
 Plugin 'reedes/vim-pencil' "IA writer like environment for non-code writing
 
+Plugin 'preservim/nerdtree'
 Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plugin 'tpope/vim-fugitive'	" git in vim
 Plugin 'neworld/vim-git-hunk-editor'
