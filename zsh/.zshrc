@@ -141,3 +141,5 @@ bindkey "^Q" push-input
 
 # read alias and fct from bash
 emulate sh -c 'source ~/.bash_profile'
+
+eval $(thefuck --alias)
