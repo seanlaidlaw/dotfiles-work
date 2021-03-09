@@ -128,6 +128,8 @@ alias mkdir="mkdir -pv"
 alias chmox="chmod +x"
 ealias "o='open'"
 alias grepcont="grep -Rli"
+alias spaces2tab="perl -pe 's/ +/\t/g'" # replaces spaces with tabs
+alias headerless="sed '1d'" # removes first line of output
 
 # ls abbrev
 export CLICOLOR=1
@@ -135,6 +137,7 @@ alias ll='ls -l -h'
 command -v exa >/dev/null 2>&1 && alias ll='exa --icons -l --git'
 command -v exa >/dev/null 2>&1 && alias ls='exa --icons'
 alias la='ls -al -h'
+alias thor='ls -thor'
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
@@ -168,6 +171,9 @@ command -v realpath >/dev/null 2>&1 && alias rp='realpath '
 # LSF alias
 alias bsubthis6="bsub -I -R'select[mem>6000] rusage[mem=6000]' -M6000 -n 1 -R'span[hosts=1]'"
 alias bsubthis30="bsub -I -R'select[mem>30000] rusage[mem=30000]' -M30000 -n 1 -R'span[hosts=1]'"
+alias bsubthis306="bsub -I -R'select[mem>30000] rusage[mem=30000]' -M30000 -n 6 -R'span[hosts=1]'"
+alias bsubthis3024="bsub -I -R'select[mem>30000] rusage[mem=30000]' -M30000 -n 24 -R'span[hosts=1]'"
+alias bsubthis66="bsub -I -R'select[mem>6000] rusage[mem=6000]' -M6000 -n 6 -R'span[hosts=1]'"
 
 # make symlink in home to current directory
 alias lnh='ln -s $(realpath .) $(realpath ~)'
