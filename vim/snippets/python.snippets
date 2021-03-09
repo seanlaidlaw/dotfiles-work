@@ -1,0 +1,14 @@
+snippet iffile
+	import os
+	# this works for both files and directories
+	if os.path.exists():
+
+snippet ifrds
+	import os
+	if not os.path.exists("pickles/${1:varname}.pkl"):
+		# some code to run here
+		with open("pickles/${1:varname}.pkl", "wb") as p:
+			p.dump(${1:varname}, p)
+	else:
+		${1:varname} = pd.read_pickle("pickles/${1:varname}.pkl")
+
