@@ -139,7 +139,7 @@ alias ll='ls -l -h'
 command -v exa >/dev/null 2>&1 && alias ll='exa --icons -l --git'
 command -v exa >/dev/null 2>&1 && alias ls='exa --icons'
 alias la='ls -al -h'
-alias thor='ls -thor'
+alias thor='exa -lr -s time'
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
