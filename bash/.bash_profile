@@ -1,6 +1,8 @@
 # set PATH
 # add my ~/bin path to PATH
 [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
+[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && PATH="$HOME/.local/bin:$PATH"
+
 
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
