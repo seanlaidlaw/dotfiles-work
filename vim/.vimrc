@@ -5,52 +5,46 @@ set encoding=utf-8
 " Plugin Management
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'mhinz/vim-startify' " starter page with links to recent files
+Plug 'mhinz/vim-startify' " starter page with links to recent files
 
 " themes
-Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
-Plugin 'chriskempson/base16-vim' " 256 color theme
-Plugin 'reedes/vim-colors-pencil' "vim pencil theme
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
+Plug 'chriskempson/base16-vim' " 256 color theme
+Plug 'reedes/vim-colors-pencil', { 'on':  'PencilSoft' } "vim pencil theme
+Plug 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
 
 " writing
-Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
-Plugin 'reedes/vim-pencil' "IA writer like environment for non-code writing
+Plug 'ferrine/md-img-paste.vim', { 'for':  'md' } " allows <leader>p to paste an image into vim
+Plug 'reedes/vim-pencil', { 'on':  'PencilSoft' } "IA writer like environment for non-code writing
 
-Plugin 'preservim/nerdtree'
-Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
-Plugin 'tpope/vim-fugitive'	" git in vim
-Plugin 'neworld/vim-git-hunk-editor'
-Plugin 'kshenoy/vim-signature' " show marks in sidebar
+Plug 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
+Plug 'tpope/vim-fugitive'	" git in vim
+Plug 'neworld/vim-git-hunk-editor'
+Plug 'kshenoy/vim-signature' " show marks in sidebar
 
 " Nvim-R
-Plugin 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/Nvim-R', { 'for':  'R' }
 
 " Easymotion
 " press ,<leader><leader> then a movement key to show hints to move cursor
-Plugin 'easymotion/vim-easymotion' " press <leader><leader> to
+Plug 'easymotion/vim-easymotion' " press <leader><leader> to
+
 " Tmux interaction
-Plugin 'benmills/vimux'
+Plug 'benmills/vimux'
 
 " Autocompletion
 if has('nvim')
-  Plugin 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else  " these allow deoplete to work with vim8
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " machine-learning based tool for autocompletion
-Plugin 'tbodt/deoplete-tabnine'
+Plug 'tbodt/deoplete-tabnine'
 " download TabNine binaries if not present
 if !isdirectory("~/.vim/bundle/deoplete-tabnine/binaries")
     call system("bash ~/.vim/bundle/deoplete-tabnine/install.sh")
@@ -58,33 +52,37 @@ endif
 
 
 " Snippet support for deoplete
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " Autorun line by line and show result
-Plugin 'metakirby5/codi.vim'
+Plug 'metakirby5/codi.vim', { 'for': 'python' }
 
 " linter
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
-Plugin 'darfink/vim-plist'
+Plug 'darfink/vim-plist', { 'for': 'plist' }
 
 " underline letters to seek to
-Plugin 'unblevable/quick-scope'
+Plug 'unblevable/quick-scope'
 
 " color code highlighter
-Plugin 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer'
 
 " <leader>gu to show undo/redo history tree
-Plugin 'sjl/gundo.vim'
-"run ;td or :TaskList to show all todos
-Plugin 'vim-scripts/TaskList.vim'
+Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
+
+"run ,td or :TaskList to show all todos
+Plug 'vim-scripts/TaskList.vim', { 'on':  'TaskList' }
 
 " minimalist writing experience
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on':  'Goyo' }
+
+
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+
 " allow plugin and syntax again
 filetype plugin indent on    " required
 
