@@ -61,10 +61,10 @@ export dotfiles_private=$HOME/.dotfiles-private
 ### DEFAULT PROGRAMS ###
 export TERMINAL="Terminal" # name of terminal program to launch with shortcuts
 export EDITOR=nvim
-command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
+command -v $EDITOR >/dev/null 2>&1 || { export EDITOR=vim; }
 
 export PAGER=bat
-command -v $PAGER >/dev/null 2>&1 || export PAGER=less
+command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
@@ -134,8 +134,8 @@ alias headerless="sed '1d'" # removes first line of output
 # ls abbrev
 export CLICOLOR=1
 alias ll='ls -l -h'
-command -v exa >/dev/null 2>&1 && alias ll='exa --icons -l --git'
-command -v exa >/dev/null 2>&1 && alias ls='exa --icons'
+command -v exa >/dev/null 2>&1 && { alias ll='exa --icons -l --git --all'; }
+command -v exa >/dev/null 2>&1 && { alias ls='exa --icons'; }
 alias la='ls -al -h'
 alias thor='ls -thor'
 
@@ -166,7 +166,7 @@ alias gl='lazygit'
 
 # realpath alias
 alias rp='readlink -f'
-command -v realpath >/dev/null 2>&1 && alias rp='realpath '
+command -v realpath >/dev/null 2>&1 && { alias rp='realpath '; }
 
 # LSF alias
 alias bsubthis6="bsub -I -R'select[mem>6000] rusage[mem=6000]' -M6000 -n 1 -R'span[hosts=1]'"
