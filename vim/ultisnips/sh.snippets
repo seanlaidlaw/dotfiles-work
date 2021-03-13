@@ -13,7 +13,7 @@ if [[ ! $(tree | grep "${1:searchterm}") ]]; then
 endsnippet
 
 snippet ifexec
-command -v ${0:0} foo >/dev/null 2>&1 && ${0:0}
+command -v ${0:0} >/dev/null 2>&1 && \{ ${0:0} ; \}
 endsnippet
 
 snippet iffile
