@@ -127,8 +127,6 @@ set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
 set wrapscan	" Searches wrap around end of file
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
 
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
@@ -525,6 +523,12 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+
+" something was blocking this meaning vimrc had to be resourced for this to
+" work until i put it towards the bottom
+" Disable highlight when <leader><cr> is pressed
+nnoremap <leader><space> :noh<cr>
 
 
 
