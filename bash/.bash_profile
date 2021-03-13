@@ -1,7 +1,7 @@
 # set PATH
 # add my ~/bin path to PATH
 [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
-
+[[ ":$PATH:" != *":$HOME/homebrew/bin:"* ]] && PATH="$HOME/homebrew/bin:$PATH"
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
 # make bash completion case insensitive
