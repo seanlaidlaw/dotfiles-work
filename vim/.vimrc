@@ -99,35 +99,10 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set laststatus=0
 set noshowmode
 
-
-colorscheme jellybeans
-if has('nvim')
-	" Fix terminal colors
-	set t_Co=256
-	colorscheme jellybeans " set base16 colorscheme incase no truecolor support
-endif
-
-if !empty($COLORTERM)
-	" For Neovim 0.1.3 and 0.1.4
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-	" for vim 8 / Or if you have Neovim >= 0.1.5
-	if (has("termguicolors"))
-		set termguicolors
-		colorscheme deep-space
-
-		" colorscheme specific settings
-		let g:deepspace_italics=1
-	endif
-
-endif
-
-" Correct RGB escape codes for vim inside tmux
-if !has('nvim') && $TERM ==# 'screen-256color'
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	set t_Co=88
-endif
+" this let base16colorspace=256 needs to be BEFORE colorscheme declaration
+let base16colorspace=256
+colorscheme base16-tomorrow-night-eighties
+hi Normal guibg=NONE ctermbg=NONE
 
 
 """""""""""""""""""""""""""""""
