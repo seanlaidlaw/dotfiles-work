@@ -111,7 +111,7 @@ hi Normal guibg=NONE ctermbg=NONE
 set relativenumber number	" Show line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
-set textwidth=100	" Line wrap (number of cols)
+set textwidth=0	" Line wrap (number of cols), 0 means never hard breaks the line
 set showmatch	" Highlight matching brace
 set matchpairs+=<:> "add <> as a matchpair as its not included by default
 
@@ -342,6 +342,7 @@ augroup Shebang
 	" for new marp.md file: auto read template and start marp server in template directory
 	autocmd BufNewFile *.marp.md r ~/Templates/marp/template.marp.md | w| !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
 	autocmd BufRead *.marp.md !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
+	autocmd BufRead *.md setlocal textwidth=79
 
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
