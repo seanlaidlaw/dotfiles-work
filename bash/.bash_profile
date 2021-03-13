@@ -59,7 +59,7 @@ export dotfiles=$HOME/.dotfiles
 export dotfiles_private=$HOME/.dotfiles-private
 
 ### DEFAULT PROGRAMS ###
-export TERMINAL="Terminal" # name of terminal program to launch with shortcuts
+export TERMINAL="iTerm" # name of terminal program to launch with shortcuts
 export EDITOR=nvim
 command -v $EDITOR >/dev/null 2>&1 || { export EDITOR=vim; }
 
