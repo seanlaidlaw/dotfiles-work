@@ -40,31 +40,11 @@ Plug 'airblade/vim-rooter'
 Plug 'benmills/vimux'
 
 " Autocompletion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else  " these allow deoplete to work with vim8
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" machine-learning based tool for autocompletion
-Plug 'tbodt/deoplete-tabnine'
-" download TabNine binaries if not present
-if !isdirectory("~/.vim/bundle/deoplete-tabnine/binaries")
-    call system("bash ~/.vim/bundle/deoplete-tabnine/install.sh")
-endif
-
-
-" Snippet support for deoplete
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autorun line by line and show result
-Plug 'metakirby5/codi.vim', { 'for': 'python' }
+"Plug 'metakirby5/codi.vim', { 'for': 'python' }
 
-" linter
-Plug 'w0rp/ale'
 
 Plug 'darfink/vim-plist', { 'for': 'plist' }
 
@@ -84,12 +64,13 @@ Plug 'vim-scripts/TaskList.vim', { 'on':  'TaskList' }
 Plug 'junegunn/goyo.vim', { 'on':  'Goyo' }
 
 
-
 " All of your Plugins must be added before the following line
 call plug#end()
 
 " allow plugin and syntax again
 filetype plugin indent on    " required
+
+
 
 """""""""""""""""""""""""""""""
 "         APPEARANCE          "
@@ -163,7 +144,7 @@ nmap S :%s//g<Left><Left>
 vmap S :s//g<Left><Left>
 
 " Opposite of J to split lines
-map K r<Enter>
+nnoremap <leader>k r<Enter>
 
 " Replace word under cursor with clipboard
 map <leader>cw ve"0px
@@ -246,6 +227,8 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " enter vim at same place you left
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
 
 """""""""""""""""""""""""""""""
 "      SPELL CHECK            "
@@ -366,6 +349,10 @@ augroup FiletypeMacros
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
 augroup END
 
+
+
+
+
 """"""""""""""""""""""""""""""
 "     PLUGIN SETTINGS        "
 """"""""""""""""""""""""""""""
@@ -463,35 +450,14 @@ nmap <LocalLeader>cl <Plug>RClearAll
 nmap <LocalLeader>ll <Plug>RNLeftPart
 
 
-
-" deoplete Settings
-if has('nvim')
-	let g:deoplete#enable_at_startup = 1
-
-	" Enable snipMate compatibility feature.
-	let g:neosnippet#enable_snipmate_compatibility = 1
-
-	" tell neosnippet snippet directory and symlink r snippets to rstudio dir
-	if !filereadable('~/.R/snippets')
-		call system("ln $dotfiles/vim/snippets/r.snippets $HOME/.R/snippets")
-	endif
-	let g:neosnippet#snippets_directory="$dotfiles/vim/snippets"
-
-
-	" use tab to expand current suggestion or suggested snippet
-	imap <expr><TAB>
-		\ neosnippet#expandable_or_jumpable() ?
-		\    "\<Plug>(neosnippet_expand_or_jump)" :
-			\ 	  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-endif
-
 let g:codi#interpreters = {
 	\ 'python': {
 		\ 'bin': 'python3',
 		\ 'prompt': '^\(>>>\|\.\.\.\) ',
 		\ },
 	\ }
+
+
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -531,4 +497,53 @@ let g:fzf_colors =
 nnoremap <leader><space> :noh<cr>
 
 
+"""""""""""""""""""""""""""""""
+""   AUTOCOMPLETE SETTINGS    "
+"""""""""""""""""""""""""""""""
+
+let g:coc_global_extensions = [
+\ 'coc-css',
+\ 'coc-html',
+\ 'coc-json',
+\ 'coc-markdownlint',
+\ 'coc-r-lsp',
+\ 'coc-sh',
+\ 'coc-snippets',
+\ 'coc-syntax',
+\ 'coc-vimlsp',
+\ 'coc-vimtex',
+\ 'coc-yaml',
+\ ]
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
