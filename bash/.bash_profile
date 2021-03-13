@@ -387,6 +387,13 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux
 fi
