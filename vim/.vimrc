@@ -37,8 +37,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 
-" Tmux interaction
-Plug 'benmills/vimux'
+" Terminal managment
+Plug 'voldikss/vim-floaterm' " floating terminal inside vim
+Plug 'benmills/vimux', { 'on': 'VimuxRunCommand' } " Tmux interaction
 
 " Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -218,7 +219,7 @@ tnoremap <Esc> <C-\><C-n>
 "augroup END
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 " quick quit
 nmap zz <Esc>ZZ
@@ -353,6 +354,10 @@ augroup FiletypeMacros
 	autocmd FileType python nnoremap <C-P> vEyopa)0iprint(0
 	autocmd FileType python nnoremap <C-m> vEy0Pa = 0
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
+
+	" execute current file in floating terminal
+	autocmd FileType python nmap <leader>w :w!\|FloatermNew --autoclose=0 python %<cr>
+	autocmd FileType sh nmap <leader>w :w!\|FloatermNew --autoclose=0 bash %<cr>
 augroup END
 
 
@@ -502,6 +507,15 @@ let g:fzf_colors =
 " Disable highlight when <leader><cr> is pressed
 nnoremap <leader><space> :noh<cr>
 
+
+" Floaterm settings
+"  easy toggle window with <F2>
+nnoremap <F2> :FloatermToggle<cr>
+tnoremap <F2> <C-\><C-n>:FloatermToggle<cr>
+
+" close terminal window on shell exit
+let g:floaterm_autoclose=1
+let g:floaterm_wintitle=0
 
 """""""""""""""""""""""""""""""
 ""   AUTOCOMPLETE SETTINGS    "
