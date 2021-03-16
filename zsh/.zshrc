@@ -91,8 +91,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# load fzf for zsh
+# load fzf for zsh, and set defaults behavior
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
 # User configuration
 
