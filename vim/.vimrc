@@ -101,6 +101,9 @@ set textwidth=0	" Line wrap (number of cols), 0 means never hard breaks the line
 set showmatch	" Highlight matching brace
 set matchpairs+=<:> "add <> as a matchpair as its not included by default
 
+" Set MacVim / GUI font and size
+set guifont=Operator\ Mono\ Lig\ Book:h14
+
 " Search within search if visual selection
 vnoremap / <Esc>/\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
 set hlsearch	" Highlight all search results
