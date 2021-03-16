@@ -48,8 +48,6 @@ export HISTSIZE=
 shopt -s cmdhist
 shopt -s lithist
 
-# store bash history instantly instead of on session close
-PROMPT_COMMAND='history -a'
 
 ### PRETTY PROMPT ###
 export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
@@ -75,7 +73,7 @@ command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
-HISTIGNORE='ls:bg:fg:history'
+HISTIGNORE='ls:bg:fg:history:zz:vbrc:vzsh:vv'
 HISTORY_IGNORE=$HISTIGNORE # set zsh HISTORY_IGNORE to bash's
 HISTFILE=$HOME/.zhistory
 

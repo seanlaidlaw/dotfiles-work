@@ -145,3 +145,20 @@ emulate sh -c 'source ~/.bashrc'
 if command -v thefuck 1>/dev/null 2>&1; then
 	eval $(thefuck --alias)
 fi
+
+
+setopt HIST_IGNORE_DUPS     # Don't record an entry that was just recorded again.
+unsetopt HIST_VERIFY        # Disable asking for confirmation before '!!'
+setopt HIST_REDUCE_BLANKS   # Remove superfluous blanks before recording entry.
+unsetopt INC_APPEND_HISTORY # Disable writing to the history file immediately
+unsetopt share_history # Disable writing to the history file immediately
+
+# write to history file directly but dont make history avaliable to other shells while they are still active
+setopt INC_APPEND_HISTORY_TIME
+
+
+# ZSH needs to have both HISTSIZE and SAVEHIST
+# I want unlimited like in bash but zsh
+# so set to a billion
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
