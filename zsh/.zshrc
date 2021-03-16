@@ -84,7 +84,6 @@ plugins=(
 	history-substring-search
 	gnu-utils
 	zsh-command-note
-	thefuck
 	careful_rm
 	zsh-z
 	expand-ealias
@@ -142,4 +141,7 @@ bindkey "^Q" push-input
 # read alias and fct from bash
 emulate sh -c 'source ~/.bash_profile'
 
-eval $(thefuck --alias)
+# setup thefuck to work
+if command -v thefuck 1>/dev/null 2>&1; then
+	eval $(thefuck --alias)
+fi

@@ -5,88 +5,72 @@ set encoding=utf-8
 " Plugin Management
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-Plugin 'mhinz/vim-startify' " starter page with links to recent files
+Plug 'mhinz/vim-startify' " starter page with links to recent files
 
 " themes
-Plugin 'tyrannicaltoucan/vim-deep-space' " truecolor theme
-Plugin 'chriskempson/base16-vim' " 256 color theme
-Plugin 'reedes/vim-colors-pencil' "vim pencil theme
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
+Plug 'chriskempson/base16-vim' " 256 color theme
+Plug 'reedes/vim-colors-pencil', { 'on':  'PencilSoft' } "vim pencil theme
+Plug 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
 
 " writing
-Plugin 'ferrine/md-img-paste.vim' " allows <leader>p to paste an image into vim
-Plugin 'reedes/vim-pencil' "IA writer like environment for non-code writing
+Plug 'ferrine/md-img-paste.vim', { 'for':  'md' } " allows <leader>p to paste an image into vim
+Plug 'reedes/vim-pencil', { 'on':  'PencilSoft' } "IA writer like environment for non-code writing
 
-Plugin 'preservim/nerdtree'
-Plugin 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
-Plugin 'tpope/vim-fugitive'	" git in vim
-Plugin 'neworld/vim-git-hunk-editor'
-Plugin 'kshenoy/vim-signature' " show marks in sidebar
+Plug 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
+Plug 'tpope/vim-fugitive'	" git in vim
+Plug 'neworld/vim-git-hunk-editor'
+Plug 'kshenoy/vim-signature' " show marks in sidebar
 
 " Nvim-R
-Plugin 'jalvesaq/Nvim-R'
+Plug 'jalvesaq/Nvim-R', { 'for':  'R' }
 
 " Easymotion
 " press ,<leader><leader> then a movement key to show hints to move cursor
-Plugin 'easymotion/vim-easymotion' " press <leader><leader> to
+Plug 'easymotion/vim-easymotion' " press <leader><leader> to
+
+" FZF in vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
+
 " Tmux interaction
-Plugin 'benmills/vimux'
+Plug 'benmills/vimux'
 
 " Autocompletion
-if has('nvim')
-  Plugin 'Shougo/deoplete.nvim'
-else  " these allow deoplete to work with vim8
-  Plugin 'Shougo/deoplete.nvim'
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-
-" machine-learning based tool for autocompletion
-Plugin 'tbodt/deoplete-tabnine'
-" download TabNine binaries if not present
-if !isdirectory("~/.vim/bundle/deoplete-tabnine/binaries")
-    call system("bash ~/.vim/bundle/deoplete-tabnine/install.sh")
-endif
-
-
-" Snippet support for deoplete
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autorun line by line and show result
-Plugin 'metakirby5/codi.vim'
+"Plug 'metakirby5/codi.vim', { 'for': 'python' }
 
-" linter
-Plugin 'w0rp/ale'
 
-Plugin 'darfink/vim-plist'
+Plug 'darfink/vim-plist', { 'for': 'plist' }
 
 " underline letters to seek to
-Plugin 'unblevable/quick-scope'
+Plug 'unblevable/quick-scope'
 
 " color code highlighter
-Plugin 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer'
 
 " <leader>gu to show undo/redo history tree
-Plugin 'sjl/gundo.vim'
-"run ;td or :TaskList to show all todos
-Plugin 'vim-scripts/TaskList.vim'
+Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
+
+"run ,td or :TaskList to show all todos
+Plug 'vim-scripts/TaskList.vim', { 'on':  'TaskList' }
 
 " minimalist writing experience
-Plugin 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'on':  'Goyo' }
+
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()
+
 " allow plugin and syntax again
 filetype plugin indent on    " required
+
+
 
 """""""""""""""""""""""""""""""
 "         APPEARANCE          "
@@ -101,35 +85,10 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set laststatus=0
 set noshowmode
 
-
-colorscheme jellybeans
-if has('nvim')
-	" Fix terminal colors
-	set t_Co=256
-	colorscheme jellybeans " set base16 colorscheme incase no truecolor support
-endif
-
-if !empty($COLORTERM)
-	" For Neovim 0.1.3 and 0.1.4
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-	" for vim 8 / Or if you have Neovim >= 0.1.5
-	if (has("termguicolors"))
-		set termguicolors
-		colorscheme deep-space
-
-		" colorscheme specific settings
-		let g:deepspace_italics=1
-	endif
-
-endif
-
-" Correct RGB escape codes for vim inside tmux
-if !has('nvim') && $TERM ==# 'screen-256color'
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	set t_Co=88
-endif
+" this let base16colorspace=256 needs to be BEFORE colorscheme declaration
+let base16colorspace=256
+colorscheme base16-tomorrow-night-eighties
+hi Normal guibg=NONE ctermbg=NONE
 
 
 """""""""""""""""""""""""""""""
@@ -138,7 +97,7 @@ endif
 set relativenumber number	" Show line numbers
 set linebreak	" Break lines at word (requires Wrap lines)
 set showbreak=+++	" Wrap-broken line prefix
-set textwidth=100	" Line wrap (number of cols)
+set textwidth=0	" Line wrap (number of cols), 0 means never hard breaks the line
 set showmatch	" Highlight matching brace
 set matchpairs+=<:> "add <> as a matchpair as its not included by default
 
@@ -149,8 +108,6 @@ set smartcase	" Enable smart-case search
 set ignorecase	" Always case-insensitive
 set incsearch	" Searches for strings incrementally
 set wrapscan	" Searches wrap around end of file
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
 
 " Set leader to be ',' as '/' is hard to reach on EU keyboards
@@ -187,7 +144,7 @@ nmap S :%s//g<Left><Left>
 vmap S :s//g<Left><Left>
 
 " Opposite of J to split lines
-map K r<Enter>
+nnoremap <leader>k r<Enter>
 
 " Replace word under cursor with clipboard
 map <leader>cw ve"0px
@@ -250,14 +207,17 @@ nnoremap <leader>s :mksession<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " save folds
-augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
-augroup END
+"augroup remember_folds
+"  autocmd!
+"  autocmd BufWinLeave * mkview
+"  autocmd BufWinEnter * silent! loadview
+"augroup END
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" quick quit
+nmap zz <Esc>ZZ
 
 " disable Ex mode
 nnoremap Q <Nop>
@@ -267,6 +227,8 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " enter vim at same place you left
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
 
 """""""""""""""""""""""""""""""
 "      SPELL CHECK            "
@@ -369,6 +331,7 @@ augroup Shebang
 	" for new marp.md file: auto read template and start marp server in template directory
 	autocmd BufNewFile *.marp.md r ~/Templates/marp/template.marp.md | w| !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
 	autocmd BufRead *.marp.md !marp --server --preview --config-file ~/Templates/marp/marp.config.js "$(greadlink -f "$(dirname %)")" &
+	autocmd BufRead *.md setlocal textwidth=79
 
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
@@ -385,6 +348,10 @@ augroup FiletypeMacros
 	autocmd FileType python nnoremap <C-m> vEy0Pa = 0
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
 augroup END
+
+
+
+
 
 """"""""""""""""""""""""""""""
 "     PLUGIN SETTINGS        "
@@ -483,32 +450,100 @@ nmap <LocalLeader>cl <Plug>RClearAll
 nmap <LocalLeader>ll <Plug>RNLeftPart
 
 
-
-" deoplete Settings
-if has('nvim')
-	let g:deoplete#enable_at_startup = 1
-
-	" Enable snipMate compatibility feature.
-	let g:neosnippet#enable_snipmate_compatibility = 1
-
-	" tell neosnippet snippet directory and symlink r snippets to rstudio dir
-	if !filereadable('~/.R/snippets')
-		call system("ln $dotfiles/vim/snippets/r.snippets $HOME/.R/snippets")
-	endif
-	let g:neosnippet#snippets_directory="$dotfiles/vim/snippets"
-
-
-	" use tab to expand current suggestion or suggested snippet
-	imap <expr><TAB>
-		\ neosnippet#expandable_or_jumpable() ?
-		\    "\<Plug>(neosnippet_expand_or_jump)" :
-			\ 	  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-endif
-
 let g:codi#interpreters = {
 	\ 'python': {
 		\ 'bin': 'python3',
 		\ 'prompt': '^\(>>>\|\.\.\.\) ',
 		\ },
 	\ }
+
+
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" you can exit out of these windows by pressing <c-c>
+nnoremap <C-b> :BLines<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_COMMAND="rg --files --hidden"
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
+" something was blocking this meaning vimrc had to be resourced for this to
+" work until i put it towards the bottom
+" Disable highlight when <leader><cr> is pressed
+nnoremap <leader><space> :noh<cr>
+
+
+"""""""""""""""""""""""""""""""
+""   AUTOCOMPLETE SETTINGS    "
+"""""""""""""""""""""""""""""""
+
+let g:coc_global_extensions = [
+\ 'coc-css',
+\ 'coc-html',
+\ 'coc-json',
+\ 'coc-markdownlint',
+\ 'coc-r-lsp',
+\ 'coc-sh',
+\ 'coc-snippets',
+\ 'coc-syntax',
+\ 'coc-vimlsp',
+\ 'coc-vimtex',
+\ 'coc-yaml',
+\ ]
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+

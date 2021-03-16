@@ -2,7 +2,7 @@
 # add my ~/bin path to PATH
 [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && PATH="$HOME/.local/bin:$PATH"
-
+[[ ":$PATH:" != *":$HOME/homebrew/bin:"* ]] && PATH="$HOME/homebrew/bin:$PATH"
 
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
@@ -61,12 +61,12 @@ export dotfiles=$HOME/.dotfiles
 export dotfiles_private=$HOME/.dotfiles-private
 
 ### DEFAULT PROGRAMS ###
-export TERMINAL="Terminal" # name of terminal program to launch with shortcuts
+export TERMINAL="iTerm" # name of terminal program to launch with shortcuts
 export EDITOR=nvim
-command -v $EDITOR >/dev/null 2>&1 || export EDITOR=vim
+command -v $EDITOR >/dev/null 2>&1 || { export EDITOR=vim; }
 
 export PAGER=bat
-command -v $PAGER >/dev/null 2>&1 || export PAGER=less
+command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
@@ -136,10 +136,11 @@ alias headerless="sed '1d'" # removes first line of output
 # ls abbrev
 export CLICOLOR=1
 alias ll='ls -l -h'
-command -v exa >/dev/null 2>&1 && alias ll='exa --icons -l --git'
-command -v exa >/dev/null 2>&1 && alias ls='exa --icons'
+command -v exa >/dev/null 2>&1 && { alias ll='exa --icons -l --git --all'; }
+command -v exa >/dev/null 2>&1 && { alias ls='exa --icons'; }
 alias la='ls -al -h'
-alias thor='exa -lr -s time'
+alias thor='ls -thor'
+command -v exa >/dev/null 2>&1 && { alias thor='exa -lr -s time'; }
 
 # easy file edit aliases
 alias vv="$EDITOR $dotfiles/vim/.vimrc"
@@ -168,7 +169,7 @@ alias gl='lazygit'
 
 # realpath alias
 alias rp='readlink -f'
-command -v realpath >/dev/null 2>&1 && alias rp='realpath '
+command -v realpath >/dev/null 2>&1 && { alias rp='realpath '; }
 
 # LSF alias
 alias bsubthis6="bsub -I -R'select[mem>6000] rusage[mem=6000]' -M6000 -n 1 -R'span[hosts=1]'"
@@ -388,6 +389,13 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux

@@ -1,0 +1,41 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet iffile
+import os
+# this works for both files and directories
+if os.path.exists(${1}):
+endsnippet
+
+snippet ifrds
+import os
+if not os.path.exists("pickles/${1:varname}.pkl"):
+	# some code to run here
+	with open("pickles/${1:varname}.pkl", "wb") as p:
+		p.dump(${1:varname}, p)
+else:
+	${1:varname} = pd.read_pickle("pickles/${1:varname}.pkl")
+endsnippet
