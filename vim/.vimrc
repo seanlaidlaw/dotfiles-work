@@ -373,7 +373,7 @@ nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gd :Gdiff<cr>
 nmap <silent><leader>gr :Gread<cr>
 nmap <silent><leader>gb :Gblame<cr>
-nmap <silent><leader>gc :Gcommit<cr>
+nmap <silent><leader>gc :Git commit<cr>
 vnoremap <silent><leader>g- :'<,'>diffput<cr>
 vnoremap <silent><leader>g= :'<,'>diffget<cr>
 
