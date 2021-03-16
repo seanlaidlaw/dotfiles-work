@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify' " starter page with links to recent files
 
+
 " themes
 Plug 'chriskempson/base16-vim' " 256 color theme
 Plug 'reedes/vim-colors-pencil', { 'on':  'PencilSoft' } "vim pencil theme

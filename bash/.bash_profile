@@ -1,8 +1,13 @@
 # set PATH
-# add my ~/bin path to PATH
+# add my ~/bin path to PATH, then local/bin
+
 [[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
 [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && PATH="$HOME/.local/bin:$PATH"
 [[ ":$PATH:" != *":$HOME/homebrew/bin:"* ]] && PATH="$HOME/homebrew/bin:$PATH"
+
+# then install new farm5 homebrew directory
+[ -d "$HOME/.homebrew_lstr/bin" ] && \
+[[ ":$PATH:" != *":$HOME/.homebrew_lstr/bin:"* ]] && PATH="$HOME/.homebrew_lstr/bin:$PATH"
 
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
@@ -378,6 +383,7 @@ elif [ "$my_host" = "SeanMacAir.local" ]; then
 fi
 
 
+alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 
 
 # QFC SETUP for real-time multi-directories matching
