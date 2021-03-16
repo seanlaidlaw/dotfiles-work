@@ -126,6 +126,7 @@ alias rm="careful_rm -c"
 alias v="$EDITOR"
 alias c="$PAGER"
 alias chl="bat --style=plain"
+alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias zz='source $dotfiles/bash/.bash_profile'
 alias py="python3"
 alias py2="python2.7"
