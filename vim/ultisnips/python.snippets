@@ -39,3 +39,31 @@ if not os.path.exists("pickles/${1:varname}.pkl"):
 else:
 	${1:varname} = pd.read_pickle("pickles/${1:varname}.pkl")
 endsnippet
+
+snippet cythonizeThis
+# 2_compile_me.sh
+python setup.py build_ext --inplace
+
+
+# 3_run_me.py
+import os
+import ${2:filename}
+${2:filename}.${1:function_name}()
+
+
+# setup.py
+# run this with the following command
+# python setup.py build_ext --inplace
+from distutils.core import setup
+from Cython.Build import cythonize
+setup(ext_modules = cythonize('${2:filename}.pyx'))
+
+
+# 1_${2:filename}.pyx
+def ${1:function_name}(int x):
+	cdef int y = 0
+	cdef int i
+	for i in range(x):
+		y += i
+	return y
+endsnippet
