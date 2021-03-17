@@ -117,7 +117,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'
 
 # command shorthand
-alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
+alias pk="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 alias pwdpb="pwd | pbcopy"
 alias t="tmux new zsh"
 alias tls="tmux ls"
