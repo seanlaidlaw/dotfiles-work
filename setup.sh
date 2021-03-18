@@ -35,6 +35,7 @@ if [[ $(ls $HOME/.oh-my-zsh/custom/plugins | wc -l) -le 1 ]]; then
     git clone "https://github.com/IngoMeyer441/zsh-easy-motion.git" "$HOME/.oh-my-zsh/custom/"
     git clone "https://github.com/KKRainbow/zsh-command-note.plugin" "$HOME/.oh-my-zsh/custom/plugins/zsh-command-note"
     git clone "https://github.com/MikeDacre/careful_rm.git"
+    git clone "https://github.com/urbainvaes/fzf-marks" "$HOME/.oh-my-zsh/custom/fzf-marks"
     cd -
 fi
 

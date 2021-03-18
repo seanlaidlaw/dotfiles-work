@@ -142,6 +142,10 @@ bindkey "^Q" push-input
 # read alias and fct from bash
 emulate sh -c 'source ~/.bashrc'
 
+
+# enable c-g for fzf-marks
+source $ZSH_CUSTOM/fzf-marks/fzf-marks.plugin.zsh
+
 # setup thefuck to work
 if command -v thefuck 1>/dev/null 2>&1; then
 	eval $(thefuck --alias)
