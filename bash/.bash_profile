@@ -237,6 +237,11 @@ function esp () {
 	printf "\n\n  - trigger: \"${trigger}\"\n    replace: \"${replacement}\"\n" >> "$HOME/Library/Preferences/espanso/default.yml"
 }
 
+function wsend () {
+	wormhole send "$@" 2>&1 | sed 's/^wormhole/$wormhole/g'
+}
+
+
 # make a copy of argument in tarball
 function tarball {
 	rootname=$(echo $@ | sed 's/\.[^.]*$//' | sed 's/\///g')
