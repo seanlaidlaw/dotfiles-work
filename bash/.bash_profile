@@ -52,8 +52,6 @@ export HISTSIZE=
 shopt -s cmdhist
 shopt -s lithist
 
-# store bash history instantly instead of on session close
-PROMPT_COMMAND='history -a'
 
 ### PRETTY PROMPT ###
 export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
@@ -79,7 +77,7 @@ command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
-HISTIGNORE='ls:bg:fg:history'
+HISTIGNORE='ls:bg:fg:history:zz:vbrc:vzsh:vv'
 HISTORY_IGNORE=$HISTIGNORE # set zsh HISTORY_IGNORE to bash's
 HISTFILE=$HOME/.zhistory
 
@@ -88,15 +86,6 @@ HISTFILE=$HOME/.zhistory
 export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8",
 export LANG="en_US.UTF-8"
-
-
-# setup easy motion like in vim
-# load easy-motion plugin
-source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
-
-# map vi-easy-motion to space bar
-bindkey -M vicmd ' ' vi-easy-motion
-
 
 
 ### ALIAS ###
@@ -123,7 +112,7 @@ alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'
 
 # command shorthand
-alias pk="HOMEBREW_NO_AUTO_UPDATE=1 && brew install"
+alias pk="HOMEBREW_NO_AUTO_UPDATE=1 brew install"
 alias pwdpb="pwd | pbcopy"
 alias t="tmux new zsh"
 alias tls="tmux ls"
@@ -132,6 +121,7 @@ alias rm="careful_rm -c"
 alias v="$EDITOR"
 alias c="$PAGER"
 alias chl="bat --style=plain"
+alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias zz='source $dotfiles/bash/.bash_profile'
 alias py="python3"
 alias py2="python2.7"
@@ -241,6 +231,11 @@ function esp () {
 	replacement="$2"
 	printf "\n\n  - trigger: \"${trigger}\"\n    replace: \"${replacement}\"\n" >> "$HOME/Library/Preferences/espanso/default.yml"
 }
+
+function wsend () {
+	wormhole send "$@" 2>&1 | sed 's/^wormhole/$wormhole/g'
+}
+
 
 # make a copy of argument in tarball
 function tarball {
@@ -389,16 +384,6 @@ fi
 
 alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 
-
-# QFC SETUP for real-time multi-directories matching
-# INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
-# This allows c-f to start qfc
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-
-# allow pyenv control over PATH, necessary to get right versions of python working
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 
 # Base16 Shell

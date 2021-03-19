@@ -44,10 +44,10 @@ ZSH_THEME="seanys_customized_sorin"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+ COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -86,13 +86,15 @@ plugins=(
 	zsh-command-note
 	careful_rm
 	zsh-z
+	zsh-lazyload
 	expand-ealias
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# load fzf for zsh
+# load fzf for zsh, and set defaults behavior
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
 # User configuration
 
@@ -120,6 +122,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Define global aliases that are expanded anywhere in command line
+alias -g G='| grep'
+alias -g L='| ${PAGER}'
+alias -g V='| ${EDITOR} -'
+
 
 # bind asc to change first word of command
 bindkey -s ,cw '\e0cW'
@@ -141,7 +148,42 @@ bindkey "^Q" push-input
 # read alias and fct from bash
 emulate sh -c 'source ~/.bashrc'
 
+
+# setup easy motion like in vim
+# load easy-motion plugin
+source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
+
+# map vi-easy-motion to space bar
+bindkey -M vicmd ' ' vi-easy-motion
+
+# enable c-g for fzf-marks
+source $ZSH_CUSTOM/fzf-marks/fzf-marks.plugin.zsh
+
+
+# QFC SETUP for real-time multi-directories matching
+# INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
+# This allows c-f to start qfc
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+
+
 # setup thefuck to work
 if command -v thefuck 1>/dev/null 2>&1; then
-	eval $(thefuck --alias)
+	lazyload fuck -- 'eval $(thefuck --alias)'
 fi
+
+
+setopt HIST_IGNORE_DUPS     # Don't record an entry that was just recorded again.
+unsetopt HIST_VERIFY        # Disable asking for confirmation before '!!'
+setopt HIST_REDUCE_BLANKS   # Remove superfluous blanks before recording entry.
+unsetopt INC_APPEND_HISTORY # Disable writing to the history file immediately
+unsetopt share_history # Disable writing to the history file immediately
+
+# write to history file directly but dont make history avaliable to other shells while they are still active
+setopt INC_APPEND_HISTORY_TIME
+
+
+# ZSH needs to have both HISTSIZE and SAVEHIST
+# I want unlimited like in bash but zsh
+# so set to a billion
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE

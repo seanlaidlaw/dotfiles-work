@@ -1,5 +1,5 @@
 # alt - return: source ~/.zshrc && open -na "$TERMINAL"
-alt - t: open -na "Terminal.app"
+alt - t: open -na "iTerm.app"
 shift + alt - a: open -a /Applications/Anki-QuickAdd.app
 alt - v: open -na "MacVim.app"
 alt - d: source ~/.zshrc && ls ~/bin | xmenu | xargs -I {} bash "~/bin/{}"

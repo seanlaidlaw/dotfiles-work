@@ -37,8 +37,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 
-" Tmux interaction
-Plug 'benmills/vimux'
+" Terminal managment
+Plug 'voldikss/vim-floaterm' " floating terminal inside vim
+Plug 'benmills/vimux', { 'on': 'VimuxRunCommand' } " Tmux interaction
 
 " Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -101,6 +102,9 @@ set showbreak=+++	" Wrap-broken line prefix
 set textwidth=0	" Line wrap (number of cols), 0 means never hard breaks the line
 set showmatch	" Highlight matching brace
 set matchpairs+=<:> "add <> as a matchpair as its not included by default
+
+" Set MacVim / GUI font and size
+set guifont=Operator\ Mono\ Lig\ Book:h14
 
 " Search within search if visual selection
 vnoremap / <Esc>/\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
@@ -215,7 +219,7 @@ tnoremap <Esc> <C-\><C-n>
 "augroup END
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nnoremap <leader>w :w!<cr>
 
 " quick quit
 nmap zz <Esc>ZZ
@@ -337,6 +341,8 @@ augroup Shebang
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
 	autocmd BufNewFile *.Rmd r ~/Templates/Rmarkdown/university_paper.Rmd |!cp ~/Templates/Rmarkdown/sll-citation-style.csl "$(greadlink -f $(dirname %))"; ln ~/.qutebrowser_bibliography mybibliography.bib
+	" for new cython file: auto copy example cython files to directory
+	autocmd BufNewFile *.pyx r ~/Templates/cython/example.pyx |!cp ~/Templates/cython/setup.py "$(greadlink -f $(dirname %))";cp ~/Templates/cython/execute_cython.sh "$(greadlink -f $(dirname %))";cp ~/Templates/cython/run_cython_fct.py "$(greadlink -f $(dirname %))"
 	autocmd BufNewFile *.cpp r ~/Templates/cpp/basic_cpp_template.cpp
 	autocmd BufNewFile *.beamer r ~/Templates/Rmarkdown/red_cambridgeus.beamer
 	autocmd BufNewFile *.\(cc\|hh\) 0put =\"//\<nl>// \".expand(\"<afile>:t\").\" -- \<nl>//\<nl>\"|2|start!
@@ -346,8 +352,13 @@ augroup END
 " insert template text on creating new some filetypes
 augroup FiletypeMacros
 	autocmd FileType python nnoremap <C-P> vEyopa)0iprint(0
-	autocmd FileType python nnoremap <C-m> vEy0Pa = 0
+	autocmd FileType python nnoremap <C-t> vEy0Pa = 0
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
+	autocmd FileType sh nnoremap <C-t> vEy0Pa = 0
+
+	" execute current file in floating terminal
+	autocmd FileType python nmap <leader>w :w!\|FloatermNew --autoclose=0 python %<cr>
+	autocmd FileType sh nmap <leader>w :w!\|FloatermNew --autoclose=0 bash %<cr>
 augroup END
 
 
@@ -363,7 +374,7 @@ nmap <leader>ge :Gedit<cr>
 nmap <silent><leader>gd :Gdiff<cr>
 nmap <silent><leader>gr :Gread<cr>
 nmap <silent><leader>gb :Gblame<cr>
-nmap <silent><leader>gc :Gcommit<cr>
+nmap <silent><leader>gc :Git commit<cr>
 vnoremap <silent><leader>g- :'<,'>diffput<cr>
 vnoremap <silent><leader>g= :'<,'>diffget<cr>
 
@@ -468,6 +479,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " you can exit out of these windows by pressing <c-c>
 nnoremap <C-b> :BLines<CR>
+nnoremap <C-m> :Marks<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg<CR>
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
@@ -497,6 +509,15 @@ let g:fzf_colors =
 " Disable highlight when <leader><cr> is pressed
 nnoremap <leader><space> :noh<cr>
 
+
+" Floaterm settings
+"  easy toggle window with <F2>
+nnoremap <F2> :FloatermToggle<cr>
+tnoremap <F2> <C-\><C-n>:FloatermToggle<cr>
+
+" close terminal window on shell exit
+let g:floaterm_autoclose=1
+let g:floaterm_wintitle=0
 
 """""""""""""""""""""""""""""""
 ""   AUTOCOMPLETE SETTINGS    "
@@ -548,3 +569,12 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" Always show the signcolumn, otherwise it would shift the text each time
+" a new mark is added
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
