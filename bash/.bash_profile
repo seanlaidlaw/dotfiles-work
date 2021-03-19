@@ -1,14 +1,18 @@
 # set PATH
 # add my ~/bin path to PATH, then local/bin
 
-[[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
-[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && PATH="$HOME/.local/bin:$PATH"
-[[ ":$PATH:" != *":$HOME/homebrew/bin:"* ]] && PATH="$HOME/homebrew/bin:$PATH"
-
 # then install new farm5 homebrew directory
 [ -d "$HOME/.homebrew_lstr/bin" ] && \
 [[ ":$PATH:" != *":$HOME/.homebrew_lstr/bin:"* ]] && PATH="$HOME/.homebrew_lstr/bin:$PATH"
 
+[[ ":$PATH:" != *":$HOME/homebrew/bin:"* ]] && PATH="$HOME/homebrew/bin:$PATH"
+[[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && PATH="$HOME/.local/bin:$PATH"
+[[ ":$PATH:" != *":$HOME/bin:"* ]] && PATH="$HOME/bin:$PATH"
+
+
+# old backup farm5 homebrew to back of PATH
+[ -d "$HOME/.linuxbrew_farm5/bin" ] && \
+[[ ":$PATH:" != *":$HOME/.linuxbrew_farm5/bin:"* ]] && PATH="$PATH:$HOME/.linuxbrew_farm5/bin"
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
 # make bash completion case insensitive
