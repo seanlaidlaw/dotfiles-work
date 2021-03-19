@@ -392,7 +392,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-	tmux attach-session -t ssh_tmux || tmux new-session zsh -s ssh_tmux
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ] && shopt -q login_shell && [[ $- == *i* ]] ;then
+	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
 
