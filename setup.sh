@@ -32,7 +32,7 @@ if [[ $(ls $HOME/.oh-my-zsh/custom/plugins | wc -l) -le 1 ]]; then
     git clone "https://github.com/MichaelAquilina/zsh-you-should-use.git" "$HOME/.oh-my-zsh/custom/plugins/you-should-use"
     git clone "https://github.com/agkozak/zsh-z"
     git clone "https://github.com/seanlaidlaw/expand-ealias.plugin.zsh.git" "expand-ealias"
-    git clone "https://github.com/IngoMeyer441/zsh-easy-motion.git" "$HOME/.oh-my-zsh/custom/"
+    git clone "https://github.com/IngoMeyer441/zsh-easy-motion.git" "$HOME/.oh-my-zsh/custom/zsh-easy-motion"
     git clone "https://github.com/KKRainbow/zsh-command-note.plugin" "$HOME/.oh-my-zsh/custom/plugins/zsh-command-note"
     git clone "https://github.com/MikeDacre/careful_rm.git"
     git clone "https://github.com/qoomon/zsh-lazyload" "$HOME/.oh-my-zsh/custom/plugins/zsh-lazyload"
