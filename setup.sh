@@ -55,7 +55,7 @@ fi
 [ "$(uname)" == "Darwin" ] && ln -s "/Users/$USER/Library/Preferences/qutebrowser/autoconfig.yml" "$dotfiles/qutebrowser/.qutebrowser/autoconfig.yml"
 
 # set keyboard speed to lowest setting for fast arrow key movements
-defaults write NSGlobalDomain KeyRepeat -int 1
+[ "$(uname)" == "Darwin" ] && defaults write NSGlobalDomain KeyRepeat -int 1
 
 # copy over Mac Services
 if [ "$(uname)" == "Darwin" ]; then
@@ -68,11 +68,10 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 # setup Ubersicht
-mkdir -p "$HOME/Library/Application Support/Übersicht/widgets"
-cd "$HOME/Library/Application Support/Übersicht/widgets" && git clone "https://github.com/seanlaidlaw/simple-bar.git"
+[ "$(uname)" == "Darwin" ] && mkdir -p "$HOME/Library/Application Support/Übersicht/widgets"
+[ "$(uname)" == "Darwin" ] && cd "$HOME/Library/Application Support/Übersicht/widgets" && git clone "https://github.com/seanlaidlaw/simple-bar.git"
 
 # symlink ultisnips so we can track them in dotfiles repo
-ln -s "$HOME/.dotfiles/vim/ultisnips" "$HOME/.config/coc/ultisnips/"
-
+printf "Symlinking Ultisnips..." && mkdir -p "$HOME/.config/coc/ultisnips/"; ln -s "$HOME/.dotfiles/vim/ultisnips" "$HOME/.config/coc/ultisnips/" && printf "done.\n\n"
 
 
