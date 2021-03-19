@@ -373,9 +373,9 @@ function dir1_files_not_in_dir2() {
 # LOAD SYSTEM SPEICIFC BASH_PROFILE
 # this allows us to keep this file as universal
 # and system specific paths can be kept apart
-my_host="$HOSTNAME"
+export my_host="$HOSTNAME"
 if [ -z "$my_host" ]; then
-	my_host="$HOST"
+	export my_host="$HOST"
 fi
 
 if [ "$my_host" = "farm5-head2" ]; then
