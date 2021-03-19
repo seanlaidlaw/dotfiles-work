@@ -7,6 +7,10 @@
 # to work as designed, please setup your dotfiles folder in the home directory
 # """
 
+# Additional steps if setting up computer for first time:
+# install oh-my-zsh
+[ ! -d "$HOME/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 printf "stowing dotfiles to home..."
 cd ~/.dotfiles
 for folder in *; do
@@ -18,10 +22,6 @@ for folder in *; do
 done
 printf "done.\n\n"
 
-
-# Additional steps if setting up computer for first time:
-# install oh-my-zsh
-[ ! -d "$HOME/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install non default zsh plugins (if custom plugin folder is empty)
 mkdir -p $HOME/.oh-my-zsh/custom/plugins
@@ -48,9 +48,6 @@ cd -
 
 # TPM installation
 [ ! -d "$HOME/.tmux/plugins/tpm" ] && printf "Downloading TPM..." && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && printf "done.\n\n"
-
-# Installing xmenu
-# mkdir -p ~/Applications && cd ~/Applications && git clone https://github.com/uluyol/xmenu.git && cd xmenu && make
 
 # setup symlink between system qutebrowser userscripts dir to dotfiles
 [ "$(uname)" == "Darwin" ] && [ -d "$dotfiles/qutebrowser/.qutebrowser/userscripts/" ] && [ ! -d "/Users/$USER/Library/Application Support/qutebrowser/userscripts" ] && ln -s "$dotfiles/qutebrowser/.qutebrowser/userscripts/" "/Users/$USER/Library/Application Support/qutebrowser/userscripts"
