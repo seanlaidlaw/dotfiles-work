@@ -84,15 +84,6 @@ export LC_CTYPE="en_US.UTF-8",
 export LANG="en_US.UTF-8"
 
 
-# setup easy motion like in vim
-# load easy-motion plugin
-source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
-
-# map vi-easy-motion to space bar
-bindkey -M vicmd ' ' vi-easy-motion
-
-
-
 ### ALIAS ###
 # setup ealias for fish-like abbrv in zsh
 # they have to be in a separate file
@@ -394,11 +385,6 @@ alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 # INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
 # This allows c-f to start qfc
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-
-# allow pyenv control over PATH, necessary to get right versions of python working
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
 
 # Base16 Shell

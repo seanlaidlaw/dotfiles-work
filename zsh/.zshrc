@@ -143,12 +143,19 @@ bindkey "^Q" push-input
 emulate sh -c 'source ~/.bashrc'
 
 
+	# setup easy motion like in vim
+	# load easy-motion plugin
+	source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
+
+	# map vi-easy-motion to space bar
+	bindkey -M vicmd ' ' vi-easy-motion
+
 # enable c-g for fzf-marks
 source $ZSH_CUSTOM/fzf-marks/fzf-marks.plugin.zsh
 
 # setup thefuck to work
 if command -v thefuck 1>/dev/null 2>&1; then
-	eval $(thefuck --alias)
+	lazyload fuck -- 'eval $(thefuck --alias)'
 fi
 
 
