@@ -6,6 +6,8 @@
 #
 # to work as designed, please setup your dotfiles folder in the home directory
 # """
+
+printf "stowing dotfiles to home..."
 cd ~/.dotfiles
 for folder in *; do
     if [ -d "${folder}" ]; then
@@ -14,6 +16,7 @@ for folder in *; do
 	fi
     fi
 done
+printf "done.\n\n"
 
 
 # Additional steps if setting up computer for first time:
@@ -42,10 +45,10 @@ fi
 
 
 # vim-plug installation
-[ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ] && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+[ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ] && printf "Downloading vim-plug..." && sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' && printf "done.\n\n"
 
 # TPM installation
-[ ! -d "$HOME/.tmux/plugins/tpm" ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+[ ! -d "$HOME/.tmux/plugins/tpm" ] && printf "Downloading TPM..." && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && printf "done.\n\n"
 
 # Installing xmenu
 # mkdir -p ~/Applications && cd ~/Applications && git clone https://github.com/uluyol/xmenu.git && cd xmenu && make
@@ -74,6 +77,6 @@ fi
 [ "$(uname)" == "Darwin" ] && cd "$HOME/Library/Application Support/Übersicht/widgets" && git clone "https://github.com/seanlaidlaw/simple-bar.git"
 
 # symlink ultisnips so we can track them in dotfiles repo
-printf "Symlinking Ultisnips..." && mkdir -p "$HOME/.config/coc/ultisnips/"; ln -s "$HOME/.dotfiles/vim/ultisnips" "$HOME/.config/coc/ultisnips/" && printf "done.\n\n"
+[ ! -d "$HOME/.config/coc/ultisnips/" ] && printf "Symlinking Ultisnips..." && mkdir -p "$HOME/.config/coc/ultisnips/" && ln -s "$HOME/.dotfiles/vim/ultisnips" "$HOME/.config/coc/ultisnips/" && printf "done.\n\n"
 
 
