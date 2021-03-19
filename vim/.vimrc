@@ -352,8 +352,9 @@ augroup END
 " insert template text on creating new some filetypes
 augroup FiletypeMacros
 	autocmd FileType python nnoremap <C-P> vEyopa)0iprint(0
-	autocmd FileType python nnoremap <C-m> vEy0Pa = 0
+	autocmd FileType python nnoremap <C-t> vEy0Pa = 0
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
+	autocmd FileType sh nnoremap <C-t> vEy0Pa = 0
 
 	" execute current file in floating terminal
 	autocmd FileType python nmap <leader>w :w!\|FloatermNew --autoclose=0 python %<cr>
@@ -478,6 +479,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " you can exit out of these windows by pressing <c-c>
 nnoremap <C-b> :BLines<CR>
+nnoremap <C-m> :Marks<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg<CR>
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
