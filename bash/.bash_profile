@@ -16,55 +16,55 @@
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
 
-# only apply certain bash shopt options when shell is login and interactive
-# so as not to have these apply when doing scp
-if shopt -q login_shell && [[ $- == *i* ]] ;then
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
+	# only apply certain bash shopt options when shell is login and interactive
+	# so as not to have these apply when doing scp
+	if shopt -q login_shell && [[ $- == *i* ]] ;then
+		# If set, the pattern "**" used in a pathname expansion context will
+		# match all files and zero or more directories and subdirectories.
+		shopt -s globstar
 
-# cd into directory by typing directory name
-shopt -s autocd
+		# cd into directory by typing directory name
+		shopt -s autocd
 
-### KEY BINDINGS ###
-# Vim Bindings
-set -o vi
+		### KEY BINDINGS ###
+		# Vim Bindings
+		set -o vi
 
-# make bash completion case insensitive
-bind 'set completion-ignore-case on'
+		# make bash completion case insensitive
+		bind 'set completion-ignore-case on'
 
-# escape vim insert mode with "jk"
-bind '"jk":vi-movement-mode'
+		# escape vim insert mode with "jk"
+		bind '"jk":vi-movement-mode'
 
-# c-l to clear screen
-bind -x '"\C-l": clear'
+		# c-l to clear screen
+		bind -x '"\C-l": clear'
 
-# c-x c-e to edit readline in EDITOR
-bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
+		# c-x c-e to edit readline in EDITOR
+		bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 
-# make up and down arrows show history based on whats already typed
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-fi
+		# make up and down arrows show history based on whats already typed
+		bind '"\e[A": history-search-backward'
+		bind '"\e[B": history-search-forward'
+	fi
 
-### HISTORY SETTINGS ###
-# append history instead of overwriting
-shopt -s histappend
-export HISTFILESIZE=
-export HISTSIZE=
+	### HISTORY SETTINGS ###
+	# append history instead of overwriting
+	shopt -s histappend
+	export HISTFILESIZE=
+	export HISTSIZE=
 
-# fit multiline commands to just one history line
-shopt -s cmdhist
-shopt -s lithist
+	# fit multiline commands to just one history line
+	shopt -s cmdhist
+	shopt -s lithist
 
 
-### PRETTY PROMPT ###
-export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
-`# this line shows first letter for each of the intermediate folders in the current dir`\
-\[\e[0;35m\]\${PWD##*/} \[\e[0m\]\
-`# this shows current dir`\
-\[\e[0;33m\]❯\[\e[0m\] "\
-`#this is the symbol i use to mark end of prompt and its colored yellow`
+	### PRETTY PROMPT ###
+	export PS1="\[\e[0;34m\] \$(echo \"\${PWD%/*}\" | sed -e 's;\(/.\)[^/]*;\1;g')/\
+	`# this line shows first letter for each of the intermediate folders in the current dir`\
+	\[\e[0;35m\]\${PWD##*/} \[\e[0m\]\
+	`# this shows current dir`\
+	\[\e[0;33m\]❯\[\e[0m\] "\
+	`#this is the symbol i use to mark end of prompt and its colored yellow`
 fi
 
 
