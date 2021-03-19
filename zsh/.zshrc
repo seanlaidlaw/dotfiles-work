@@ -122,6 +122,11 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Define global aliases that are expanded anywhere in command line
+alias -g G='| grep'
+alias -g L='| ${PAGER}'
+alias -g V='| ${EDITOR} -'
+
 
 # bind asc to change first word of command
 bindkey -s ,cw '\e0cW'
