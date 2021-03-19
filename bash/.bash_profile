@@ -15,9 +15,10 @@
 [[ ":$PATH:" != *":$HOME/.linuxbrew_farm5/bin:"* ]] && PATH="$PATH:$HOME/.linuxbrew_farm5/bin"
 
 if  [ -n "$BASH_VERSION" ]; then #if using bash
-# make bash completion case insensitive
-bind 'set completion-ignore-case on'
 
+# only apply certain bash shopt options when shell is login and interactive
+# so as not to have these apply when doing scp
+if shopt -q login_shell && [[ $- == *i* ]] ;then
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
@@ -28,6 +29,9 @@ shopt -s autocd
 ### KEY BINDINGS ###
 # Vim Bindings
 set -o vi
+
+# make bash completion case insensitive
+bind 'set completion-ignore-case on'
 
 # escape vim insert mode with "jk"
 bind '"jk":vi-movement-mode'
@@ -41,6 +45,7 @@ bind -m vi-insert '"\C-x\C-e": edit-and-execute-command'
 # make up and down arrows show history based on whats already typed
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+fi
 
 ### HISTORY SETTINGS ###
 # append history instead of overwriting
