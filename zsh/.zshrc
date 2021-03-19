@@ -86,6 +86,7 @@ plugins=(
 	zsh-command-note
 	careful_rm
 	zsh-z
+	zsh-lazyload
 	expand-ealias
 )
 
@@ -143,15 +144,22 @@ bindkey "^Q" push-input
 emulate sh -c 'source ~/.bashrc'
 
 
-	# setup easy motion like in vim
-	# load easy-motion plugin
-	source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
+# setup easy motion like in vim
+# load easy-motion plugin
+source $ZSH_CUSTOM/zsh-easy-motion/easy_motion.plugin.zsh
 
-	# map vi-easy-motion to space bar
-	bindkey -M vicmd ' ' vi-easy-motion
+# map vi-easy-motion to space bar
+bindkey -M vicmd ' ' vi-easy-motion
 
 # enable c-g for fzf-marks
 source $ZSH_CUSTOM/fzf-marks/fzf-marks.plugin.zsh
+
+
+# QFC SETUP for real-time multi-directories matching
+# INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
+# This allows c-f to start qfc
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+
 
 # setup thefuck to work
 if command -v thefuck 1>/dev/null 2>&1; then

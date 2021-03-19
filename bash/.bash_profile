@@ -381,11 +381,6 @@ fi
 alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 
 
-# QFC SETUP for real-time multi-directories matching
-# INSTALL WITH: git clone https://github.com/pindexis/qfc $HOME/.qfc
-# This allows c-f to start qfc
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
