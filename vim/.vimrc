@@ -375,6 +375,7 @@ augroup FiletypeMacros
 	autocmd FileType python nnoremap <C-t> vEy0Pa = 0
 	autocmd FileType sh nnoremap <C-P> veyopa"0iecho "$0
 	autocmd FileType sh nnoremap <C-t> vEy0Pa = 0
+	autocmd FileType go nnoremap <C-P> vEyopa)0ifmt.Println(0
 
 	" execute current file in floating terminal
 	autocmd FileType python nmap <leader>w :w!\|FloatermNew --autoclose=0 python %<cr>
