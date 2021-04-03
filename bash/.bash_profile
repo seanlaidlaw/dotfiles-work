@@ -232,6 +232,21 @@ function mvlnh () {
 	done
 }
 
+# symlink the realpath output for what is provided to current dir
+function shortcuth () {
+	source_file="$(rp $1)"
+
+	if [ $# -eq 2 ];then
+		sym_folder_name="$2"
+	else
+		sym_folder_name="${source_file:t}"
+	fi
+	destination_file="$(pwd)/${sym_folder_name}"
+
+	ln -s "$source_file" "$destination_file"
+}
+
+
 function esp () {
 	trigger="$1"
 	replacement="$2"
