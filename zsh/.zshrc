@@ -83,7 +83,6 @@ plugins=(
 	extract
 	history-substring-search
 	gnu-utils
-	zsh-command-note
 	careful_rm
 	zsh-z
 	zsh-lazyload
@@ -125,6 +124,8 @@ export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 # Define global aliases that are expanded anywhere in command line
 alias -g G='| grep'
 alias -g L='| ${PAGER}'
+alias -g P='| pbcopy'
+alias -g H='| head'
 alias -g V='| ${EDITOR} -'
 
 
