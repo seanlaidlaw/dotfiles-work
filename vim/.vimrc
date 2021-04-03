@@ -524,6 +524,8 @@ let g:fzf_colors =
 " Disable highlight when <leader><cr> is pressed
 nnoremap <leader><space> :noh<cr>
 
+" Easymotion settings, remap leader to spacebar
+nmap <space> <Plug>(easymotion-prefix)
 
 " Floaterm settings
 "  easy toggle window with <F2>
