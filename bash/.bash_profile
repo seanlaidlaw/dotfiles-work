@@ -403,7 +403,6 @@ elif [ "$my_host" = "SeanMacAir.local" ]; then
 fi
 
 
-alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 
 
 
