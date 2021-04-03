@@ -133,6 +133,7 @@ alias -g V='| ${EDITOR} -'
 # bind asc to change first word of command
 bindkey -s ,cw '\e0cW'
 bindkey -s ,cl '\e0cWll\eA^M'
+bindkey -s ,ll '\e0cWll\eA^M'
 bindkey -s ,cc '\e0cWc\eA^M'
 bindkey -s ,c8 '\e$F/C/*'
 
