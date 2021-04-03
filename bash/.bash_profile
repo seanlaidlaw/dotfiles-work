@@ -200,6 +200,13 @@ function cd {
 function cdir () {
 	cd "$(dirname "$@")"
 }
+function rppb () {
+	rp "$1" | pbcopy
+}
+
+function catpb() {
+	cat "$@" | pbcopy
+}
 
 # moves file in argument to current directory
 function mvh () {
