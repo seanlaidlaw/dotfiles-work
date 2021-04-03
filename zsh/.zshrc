@@ -86,6 +86,7 @@ plugins=(
 	careful_rm
 	zsh-z
 	zsh-lazyload
+	fzf-command-bookmarks
 	expand-ealias
 )
 
@@ -138,6 +139,9 @@ bindkey -s ,c8 '\e$F/C/*'
 # map double escape to fuck command
 # src: https://github.com/nvbn/thefuck
 bindkey -s '\e\e' 'fuck^M'
+
+# map ctrl-s to show fzf-command-bookmarks
+bindkey '^s' fzf-command-bookmark-show-widget
 
 # make jk in shell exit into command mode
 bindkey jk vi-cmd-mode

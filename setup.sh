@@ -36,7 +36,9 @@ cd "$HOME/.oh-my-zsh/custom/plugins"
 [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-z" ] && git clone "https://github.com/agkozak/zsh-z"
 [ ! -d "$HOME/.oh-my-zsh/custom/plugins/expand-ealias" ] && git clone "https://github.com/seanlaidlaw/expand-ealias.plugin.zsh.git" "expand-ealias"
 [ ! -d "$HOME/.oh-my-zsh/custom/zsh-easy-motion" ] && git clone "https://github.com/IngoMeyer441/zsh-easy-motion.git" "$HOME/.oh-my-zsh/custom/zsh-easy-motion"
-[ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-command-note" ] && git clone "https://github.com/KKRainbow/zsh-command-note.plugin" "$HOME/.oh-my-zsh/custom/plugins/zsh-command-note"
+[ ! -d "$HOME/.oh-my-zsh/custom/plugins/fzf-command-bookmarks" ] && git clone "https://github.com/dzervas/fzf-command-bookmarks" "$HOME/.oh-my-zsh/custom/plugins/fzf-command-bookmarks"
+
+
 [ ! -d "$HOME/.oh-my-zsh/custom/plugins/careful_rm" ] && git clone "https://github.com/MikeDacre/careful_rm.git"
 [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-lazyload" ] && git clone "https://github.com/qoomon/zsh-lazyload" "$HOME/.oh-my-zsh/custom/plugins/zsh-lazyload"
 [ ! -d "$HOME/.oh-my-zsh/custom/fzf-marks" ] && git clone "https://github.com/urbainvaes/fzf-marks" "$HOME/.oh-my-zsh/custom/fzf-marks"

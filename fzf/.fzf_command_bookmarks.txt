@@ -1,0 +1,1 @@
+cat Application\ Support/io.airr.airr.adhoc/RCTAsyncLocalStorage_V1/2e8930e7c8cb3bd5bc7190da9cb635e4 | jq '[.entities][0]' | jq -r | jq '.[] | select(.position==.duration)' | jq ".episode"##jq_episode
