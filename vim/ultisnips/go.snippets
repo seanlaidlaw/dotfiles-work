@@ -1,0 +1,55 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet forrange "creates a for loop that iterates over a range"
+for i, s := range ${1} {
+    fmt.Println(i, s)
+}
+endsnippet
+
+snippet ifin "checks if key is in a go map"
+if val, ok := ${1}["${2}"]; ok {
+	${3}
+}
+endsnippet
+
+
+snippet randint "generates different random numbers each time"
+randgen := rand.New(rand.NewSource(time.Now().UnixNano()))
+randgen.Intn(${1})) // random nb between 0 and ${1}
+endsnippet
+
+snippet typeof
+fmt.Println(reflect.TypeOf(${1}))
+endsnippet
+
+snippet endswith
+strings.HasSuffix("$1", "$2")
+endsnippet
+
+
+snippet str2int
+i,err := strconv.Atoi($1)
+endsnippet
