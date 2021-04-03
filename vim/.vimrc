@@ -238,8 +238,11 @@ nmap zz <Esc>ZZ
 " disable Ex mode
 nnoremap Q <Nop>
 
+" auto commands on save
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+" automatically organizes Go imports on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 " enter vim at same place you left
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -370,6 +373,7 @@ augroup FiletypeMacros
 	" execute current file in floating terminal
 	autocmd FileType python nmap <leader>w :w!\|FloatermNew --autoclose=0 python %<cr>
 	autocmd FileType sh nmap <leader>w :w!\|FloatermNew --autoclose=0 bash %<cr>
+	autocmd FileType go nmap <leader>w :w!\|FloatermNew --autoclose=0 go run % testproj<cr>
 augroup END
 
 
