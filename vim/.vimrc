@@ -29,6 +29,9 @@ Plug 'kshenoy/vim-signature' " show marks in sidebar
 " Nvim-R
 Plug 'jalvesaq/Nvim-R', { 'for':  'R' }
 
+" Add premade Snippets
+Plug 'honza/vim-snippets'
+
 " Easymotion
 " press ,<leader><leader> then a movement key to show hints to move cursor
 Plug 'easymotion/vim-easymotion' " press <leader><leader> to
