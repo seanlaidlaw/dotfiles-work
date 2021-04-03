@@ -355,6 +355,7 @@ augroup Shebang
 	" for new Rmd file: auto copy citation style to directory
 	"read template into buffer, and hard link Qutebrowser bibliography to current folder
 	autocmd BufNewFile *.Rmd r ~/Templates/Rmarkdown/university_paper.Rmd |!cp ~/Templates/Rmarkdown/sll-citation-style.csl "$(greadlink -f $(dirname %))"; ln ~/.qutebrowser_bibliography mybibliography.bib
+	autocmd BufNewFile *.go r ~/Templates/go/example.go
 	" for new cython file: auto copy example cython files to directory
 	autocmd BufNewFile *.pyx r ~/Templates/cython/example.pyx |!cp ~/Templates/cython/setup.py "$(greadlink -f $(dirname %))";cp ~/Templates/cython/execute_cython.sh "$(greadlink -f $(dirname %))";cp ~/Templates/cython/run_cython_fct.py "$(greadlink -f $(dirname %))"
 	autocmd BufNewFile *.cpp r ~/Templates/cpp/basic_cpp_template.cpp
