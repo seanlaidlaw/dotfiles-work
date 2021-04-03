@@ -172,6 +172,11 @@ if command -v thefuck 1>/dev/null 2>&1; then
 fi
 
 
+# enable KSH globbing
+# ex: ls !((succesful_alignments)) gets all files except 'succesful_alignments'
+# ex: ls !((succ*)) also gets all files except those that match 'succ*'
+setopt kshglob
+
 setopt HIST_IGNORE_DUPS     # Don't record an entry that was just recorded again.
 unsetopt HIST_VERIFY        # Disable asking for confirmation before '!!'
 setopt HIST_REDUCE_BLANKS   # Remove superfluous blanks before recording entry.

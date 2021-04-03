@@ -82,7 +82,7 @@ command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
-HISTIGNORE='ls:bg:fg:history:zz:vbrc:vzsh:vv'
+HISTIGNORE='ls:l:bg:fg:history:zz:vbrc:vzsh:vv'
 HISTORY_IGNORE=$HISTIGNORE # set zsh HISTORY_IGNORE to bash's
 HISTFILE=$HOME/.zhistory
 
@@ -141,8 +141,9 @@ alias headerless="sed '1d'" # removes first line of output
 export CLICOLOR=1
 alias ll='ls -l -h'
 command -v exa >/dev/null 2>&1 && { alias ll='exa --icons -l --git --all'; }
-command -v exa >/dev/null 2>&1 && { alias ls='exa --icons'; }
+command -v exa >/dev/null 2>&1 && { alias l='exa --icons'; }
 alias la='ls -al -h'
+command -v exa >/dev/null 2>&1 && { alias la='exa --icons -all'; }
 alias thor='ls -thor'
 command -v exa >/dev/null 2>&1 && { alias thor='exa -lr -s time'; }
 
@@ -230,6 +231,21 @@ function mvlnh () {
 		mvln "$f" "./"
 	done
 }
+
+# symlink the realpath output for what is provided to current dir
+function shortcuth () {
+	source_file="$(rp $1)"
+
+	if [ $# -eq 2 ];then
+		sym_folder_name="$2"
+	else
+		sym_folder_name="${source_file:t}"
+	fi
+	destination_file="$(pwd)/${sym_folder_name}"
+
+	ln -s "$source_file" "$destination_file"
+}
+
 
 function esp () {
 	trigger="$1"
@@ -387,7 +403,6 @@ elif [ "$my_host" = "SeanMacAir.local" ]; then
 fi
 
 
-alias bj="/software/python-3.9.2/bin/python3 /nfs/users/nfs_s/sl31/bin/bj.py"
 
 
 
