@@ -450,13 +450,15 @@ nnoremap <F3> :call SelectModeToggle()<CR>
 function! SelectModeToggle()
 	if g:select_mode_status == 0
 		set wrap nolinebreak nolist
-		set relativenumber! number!	" Show line numbers
+		set relativenumber! number!	" hide line numbers
 		set showbreak=
+		set signcolumn=no " hide marks column
 		let g:select_mode_status=1
 	else
 		set list linebreak
 		set relativenumber number	" Show line numbers
 		set showbreak=+++	" Wrap-broken line prefix
+		set signcolumn=yes " show marks column
 		let g:select_mode_status=0
 	endif
 endfunction
