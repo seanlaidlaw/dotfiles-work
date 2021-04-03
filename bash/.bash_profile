@@ -82,7 +82,7 @@ command -v $PAGER >/dev/null 2>&1 || { export PAGER=less; }
 
 
 # dont add these commands to history
-HISTIGNORE='ls:bg:fg:history:zz:vbrc:vzsh:vv'
+HISTIGNORE='ls:l:bg:fg:history:zz:vbrc:vzsh:vv'
 HISTORY_IGNORE=$HISTIGNORE # set zsh HISTORY_IGNORE to bash's
 HISTFILE=$HOME/.zhistory
 
@@ -141,8 +141,9 @@ alias headerless="sed '1d'" # removes first line of output
 export CLICOLOR=1
 alias ll='ls -l -h'
 command -v exa >/dev/null 2>&1 && { alias ll='exa --icons -l --git --all'; }
-command -v exa >/dev/null 2>&1 && { alias ls='exa --icons'; }
+command -v exa >/dev/null 2>&1 && { alias l='exa --icons'; }
 alias la='ls -al -h'
+command -v exa >/dev/null 2>&1 && { alias la='exa --icons -all'; }
 alias thor='ls -thor'
 command -v exa >/dev/null 2>&1 && { alias thor='exa -lr -s time'; }
 
