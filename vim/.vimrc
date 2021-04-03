@@ -20,6 +20,7 @@ Plug 'ryanoasis/vim-devicons' " icons in nerdtree and starterpage
 Plug 'ferrine/md-img-paste.vim', { 'for':  'md' } " allows <leader>p to paste an image into vim
 Plug 'reedes/vim-pencil', { 'on':  'PencilSoft' } "IA writer like environment for non-code writing
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'scrooloose/nerdcommenter' " keyboard shorcut for easy comments
 Plug 'tpope/vim-fugitive'	" git in vim
 Plug 'neworld/vim-git-hunk-editor'
@@ -92,6 +93,16 @@ let base16colorspace=256
 colorscheme base16-tomorrow-night-eighties
 hi Normal guibg=NONE ctermbg=NONE
 
+" enable treesitter syntax highlighting, as it  highlights
+" way more things that normal vim colors the same
+if has('nvim')
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {enable = true},
+}
+EOF
+endif
 
 """""""""""""""""""""""""""""""
 "           GENERAL           "
